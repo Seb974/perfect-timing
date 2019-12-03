@@ -22,7 +22,7 @@ php bin/console make:migration
 cd src/Migrations
 file=$(ls)
 echo "********** SED **********"
-sed 's/JSON/LONGTEXT/g' $file
+sed -i 's/JSON/LONGTEXT/g' $file
 echo "********** END SED **********"
 cd ../..
 
