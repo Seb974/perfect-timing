@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#passage à PHP7.3
+export PATH=/opt/plesk/php/7.3/bin/:$PATH
+
 # force to install dependencies if some is missing
 composer install
 
