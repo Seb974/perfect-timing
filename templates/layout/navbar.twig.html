@@ -1,0 +1,108 @@
+<header id="header">
+    <div class="container">
+        <div class="navbar-backdrop">
+            <div class="navbar">
+                <a href="{{ path('index') }}" class="logo">
+                    <img src="{{ asset('uploads/logos/clikEat.png') }}" alt="Clik Eat Logo" height="50px">
+                </a>
+                <div class="toright">
+                    <nav class="nav">
+                        {% if app.user %}
+                            <ul>
+                                <li class="dropdown">
+                                    <a href="{{ path('login') }}" data-toggle="dropdown">
+                                        <img src="" alt="">
+                                        <span>{{ app.user.username }}
+                                            <i class="fas fa-chevron-down"></i>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ path('user_self_show') }}">
+                                            <i class="fas fa-user"></i>Mon profil
+                                        </a>
+
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('user_index') }}">
+                                                <i class="fas fa-users"></i>Users</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('city_index') }}">
+                                                <i class="fas fa-city"></i>City</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('product_index') }}">
+                                                <i class="fas fa-utensils"></i>Produits</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('variant_index') }}">
+                                                    <i class="fas fa-sort"></i>Variantes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('category_index') }}">
+                                                <i class="fas fa-columns"></i>Catégories</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('tva_index') }}">
+                                                <i class="fas fa-calculator"></i>Taxes</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('allergen_index') }}">
+                                                <i class="fas fa-exclamation-triangle"></i>Allergènes</a>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_DELIVERER') %}
+                                           <a class="dropdown-item" href="{{ path('deliverer') }}">
+                                               <i class="fas fa-truck"></i>Livraisons</a>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_SUPPLIER') %}
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('get_order') }}">
+                                                <i class="fas fa-cash-register"></i>Orders</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ path('stock_index') }}">
+                                                <i class="fas fa-box-open"></i>Stocks</a>
+                                        {% endif %}
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ path('disconnect') }}">
+                                            <i class="fas fa-sign-out-alt"></i>Se déconnecter
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="{{ path('index') }}">
+                                        <i class="fas fa-home"></i>
+                                    </a>
+                                </li>
+                            </li>
+                            {{ render( controller('App\\Controller\\CartController::getBadgeCurrentCart') ) }}
+                            {# <li>
+                                <a data-toggle="search">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </li> #}
+                        </ul>
+                    {% else %}
+                        <ul>
+                            <li>
+                                <a href="{{ path('login') }}">Se connecter</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('index') }}">
+                                    <i class="fas fa-home"></i>
+                                </a>
+                            </li>
+                            {{ render( controller('App\\Controller\\CartController::getBadgeCurrentCart') ) }}
+                            {# <li>
+                                <a data-toggle="search">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </li> #}
+                        </ul>
+                    {% endif %}
+                </nav>
+            </div>
+        </div>
+        <div class="navbar-search">
+            <div class="container">
+                <form method="post">
+                    <input type="text" class="form-control" placeholder="Rechercher...">
+                    <i class="fas fa-times close"></i>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
