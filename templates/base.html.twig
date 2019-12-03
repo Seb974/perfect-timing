@@ -1,12 +1,65 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to Perfect Timing 2!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>{{ title|default('Clik Eat') }}</title>
+    {% block stylesheets %}
+    <!-- GoogleFont -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="{{ asset('plugins/animate/animate.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/theme/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/theme/custom.css') }}">
+
+    <!-- Custom CSS -->
+        {% if block("css") is defined %}
+            {% block css %}{% endblock %}
+        {% endif %}
+    {% endblock %}
+</head>
+
+<body>
+    {% include 'layout/navbar.twig.html' %}
+
+        <div id="page-container">
+          <div id="content-wrap">
+            {% block body %}{% endblock %}
+           </div>
+        </div>
+    {% include 'layout/footer.twig.html' %}
+
+    {% block javascripts %}
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- popperJs -->
+    <script src="{{ asset('plugins/popper/popper.min.js') }}"></script>
+
+    <!-- BootstrapJs -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="{{ asset('plugins/theme/theme.js') }}"></script>
+
+    <!-- Custom JS -->
+        {% if block("js") is defined %}
+            {% block js %}{% endblock %}
+        {% endif %}
+    {% endblock %}
+
+</body>
+
 </html>
