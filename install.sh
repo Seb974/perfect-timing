@@ -18,7 +18,7 @@ php bin/console doctrine:database:create
 # prepare database schema
 php bin/console make:migration
 
-# replace ALL JSOPN by LONGTEXT
+# replace ALL JSON by LONGTEXT
 cd src/Migrations
 file=$(ls)
 sed -i 's/JSON/LONGTEXT/g' $file
