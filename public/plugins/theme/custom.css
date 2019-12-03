@@ -1,0 +1,76 @@
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+	bottom: .5em;
+}
+
+.comment-wrapper {
+	max-height: 650px;
+	overflow: auto;
+	border-top: #E74B3D 1px solid;
+}
+
+.toright {
+    position: absolute;
+   right: 0px;
+}
+
+.yen_red {
+	color: #E74B3D;
+}
+
+.yen_blog_badge {
+	position: absolute;
+	right: 0px;
+}
+
+.sidenav {
+	height: 100%;
+	width: 200px;
+	position: fixed;
+	z-index: 1;
+	top: 0px;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 70px;
+}
+
+.sidenav a {
+	padding: 6px 6px 6px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+#main {
+	margin-left: 200px !important;
+}
+
+#pad_my_order li {
+	padding: 20px;
+	
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+
+	.sidenav a {
+		font-size: 18px;
+	}
+}
+
