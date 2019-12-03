@@ -21,9 +21,7 @@ php bin/console make:migration
 # replace ALL JSOPN by LONGTEXT
 cd src/Migrations
 file=$(ls)
-echo "********** SED **********"
 sed -i 's/JSON/LONGTEXT/g' $file
-echo "********** END SED **********"
 cd ../..
 
 # populate database
