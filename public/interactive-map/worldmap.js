@@ -44,7 +44,8 @@
 			'url': '/api/host_placements',
 			'success': function(response) {
 				for (o in response) {
-					console.log(o);
+					locations[o] = response[o];
+					console.log(locations[o]);
 				}
 			}
 		});
