@@ -40,9 +40,8 @@
 		
 		console.log("LOCATIONS: ", locations)
 		for (location in locations){
-			var loc=locations[location];
-			if (loc.name !== undefined)
-				console.log("LOOPING YOUHOUUUU");
+			// var loc=locations[location];
+			console.log("LOOPING YOUHOUUUU");
 			// console.log("NAME: ", loc.name);
 			// var xy=get_xy(loc.lat, loc.lng);
 			// console.log("XY: ", xy);
