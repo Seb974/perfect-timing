@@ -3,6 +3,26 @@
 {% block css %}
 	<link rel="stylesheet" href="{{ asset('plugins/css/coworking.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('plugins/css/fonts.css') }}" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+
+    <style>
+        #pagewrap {
+            margin: 0 auto;
+            width: 800px;
+            max-width: 94%;
+        }
+
+        #map {
+            width: 100%;
+        }
+
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+        #map-example-container {height: 300px};
+    </style>
+
 {% endblock %}
 
 {% block title %}
@@ -10,6 +30,10 @@
 {% endblock %}
 
 {% block body %}
+
+    <div id="map-example-container"></div>
+    <input type="search" id="input-map" class="form-control" placeholder="Where are we going?" />
+
 	<div class="section p-0 nobg clearfix">
 		<div class="container">
 			<div class="row mb-2">
@@ -47,45 +71,137 @@
 			<div>
 				<div class="masonry-thumbs grid-4" data-big="2" data-lightbox="gallery">
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/1.jpg" alt="Gallery Thumb 1">
+                        <img src="https://loremflickr.com/320/240/farm?random=1" alt="Gallery Thumb 1">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/2.jpg" alt="Gallery Thumb 12">
+                        <img src="https://loremflickr.com/320/240/farm?random=2" alt="Gallery Thumb 12">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/3.jpg" alt="Gallery Thumb 3">
+                        <img src="https://loremflickr.com/320/240/farm?random=3" alt="Gallery Thumb 3">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/4.jpg" alt="Gallery Thumb 4">
+                        <img src="https://loremflickr.com/320/240/farm?random=4" alt="Gallery Thumb 4">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/5.jpg" alt="Gallery Thumb 5">
+                        <img src="https://loremflickr.com/320/240/farm?random=5" alt="Gallery Thumb 5">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/6.jpg" alt="Gallery Thumb 6">
+                        <img src="https://loremflickr.com/320/240/farm?random=6" alt="Gallery Thumb 6">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/7.jpg" alt="Gallery Thumb 7">
+                        <img src="https://loremflickr.com/320/240/farm?random=7" alt="Gallery Thumb 7">
                     </a>
 					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/8.jpg" alt="Gallery Thumb 13">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/9.jpg" alt="Gallery Thumb 6">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/10.jpg" alt="Gallery Thumb 7">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="images/location/thumbs/11.jpg" alt="Gallery Thumb 12">
+                        <img src="https://loremflickr.com/320/240/farm?random=8" alt="Gallery Thumb 8">
                     </a>
 				</div>
 			</div>
 		</div>
 	</div>
+        <div id="pagewrap">
+            <h1 id="location_name">City</h1>
+        <div id="map"></div>
+    </div>
+
+    <div class="example-wrapper">
+    </div>
 {% endblock %}
 
 {% block js %}
     <script src="{{ asset('js/jquery.js') }}"></script>
-	<script src="{{ asset('js/plugins.js') }}"></script>
+    <script src="{{ asset('js/plugins.js') }}"></script>
+    <script type='text/javascript' src={{ asset('interactive-map/raphael-min.js') }}></script>
+    <script type='text/javascript' src={{ asset('interactive-map/worldmap.js') }}></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+    <script>
+    (function() {
+    var placesAutocomplete = places({
+        appId: 'pl6124DJ467I',
+        apiKey: 'dac682bc8a0dc7a59f7ada449553bcf9',
+        container: document.querySelector('#input-map')
+    });
+
+    var map = L.map('map-example-container', {
+        scrollWheelZoom: false,
+        zoomControl: false
+    });
+
+    var osmLayer = new L.TileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        minZoom: 1,
+        maxZoom: 13,
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }
+    );
+
+    var markers = [];
+
+    map.setView(new L.LatLng(0, 0), 1);
+    map.addLayer(osmLayer);
+
+    placesAutocomplete.on('suggestions', handleOnSuggestions);
+    placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
+    placesAutocomplete.on('change', handleOnChange);
+    placesAutocomplete.on('clear', handleOnClear);
+
+    function handleOnSuggestions(e) {
+        markers.forEach(removeMarker);
+        markers = [];
+
+        if (e.suggestions.length === 0) {
+        map.setView(new L.LatLng(0, 0), 1);
+        return;
+        }
+
+        e.suggestions.forEach(addMarker);
+        findBestZoom();
+    }
+
+    function handleOnChange(e) {
+        markers
+        .forEach(function(marker, markerIndex) {
+            if (markerIndex === e.suggestionIndex) {
+            markers = [marker];
+            marker.setOpacity(1);
+            findBestZoom();
+            } else {
+            removeMarker(marker);
+            }
+        });
+    }
+
+    function handleOnClear() {
+        map.setView(new L.LatLng(0, 0), 1);
+        markers.forEach(removeMarker);
+    }
+
+    function handleOnCursorchanged(e) {
+        markers
+        .forEach(function(marker, markerIndex) {
+            if (markerIndex === e.suggestionIndex) {
+            marker.setOpacity(1);
+            marker.setZIndexOffset(1000);
+            } else {
+            marker.setZIndexOffset(0);
+            marker.setOpacity(0.5);
+            }
+        });
+    }
+
+    function addMarker(suggestion) {
+        var marker = L.marker(suggestion.latlng, {opacity: .4});
+        marker.addTo(map);
+        markers.push(marker);
+    }
+
+    function removeMarker(marker) {
+        map.removeLayer(marker);
+    }
+
+    function findBestZoom() {
+        var featureGroup = L.featureGroup(markers);
+        map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
+    }
+    })();
+    </script>
 {% endblock %}
