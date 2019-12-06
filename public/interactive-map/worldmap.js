@@ -46,8 +46,7 @@
 			'success': function(response) {
 				var stock;
 				for (o in response) {
-					stock[o] = response[o];
-					console.log(stock);
+					console.log(response[o]);
 				}
 				console.log("STRINGIFY: ", JSON.stringify(stock));
 //				localStorage.setItem("Locations", response)
