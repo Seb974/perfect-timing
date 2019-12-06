@@ -35,25 +35,6 @@
 		
 		var map=paper.path(map_path).attr({fill: 'purple', stroke: 'blue'}).scale(scale, scale, 0, 0);
 		map.click(click);
-		jQuery.ajax({
-			headers: { 
-				'Accept': 'application/json',
-			},
-			'type': 'GET',
-			'url': '/api/host_placements',
-			'success': function(response) {
-				var stock = {};
-				var i = 0;
-				for (o in response) {
-					stock[i] = response[o]
-					i += 1;
-					console.log(response[o]);
-				}
-				console.log("STRINGIFY: ", JSON.stringify(stock));
-				// localStorage.setItem("Locations", JSON.stringify(stock))
-				localStorage.clear();
-			}
-		});
 		//create set of locations
 		var location_set=paper.set();
 		
@@ -141,7 +122,26 @@
 				'url': '/api/host_placements',
 				'data': JSON.stringify(new2),
 				'dataType': 'json',
-				'success': function(response) { console.log(response); }
+				'success': function(response) {
+					jQuery.ajax({
+						headers: { 
+							'Accept': 'application/json',
+						},
+						'type': 'GET',
+						'url': '/api/host_placements',
+						'success': function(response) {
+							var stock = {};
+							var i = 0;
+							for (o in response) {
+								stock[i] = response[o];
+								i += 1;
+								console.log(response[o]);
+							}
+							console.log("STRINGIFY: ", JSON.stringify(stock));
+							localStorage.setItem("Locations", JSON.stringify(stock))
+						}
+					});			
+				}
 				});
 				window.location.reload();
 				// localStorage.clear();	
@@ -189,9 +189,11 @@
 	var locations;
 
 	//create locations
+	console.log("HELLO");
 	console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
-	if (localStorage.getItem("Locations") !== null)
+	if (localStorage.getItem("Locations") !== null) {
 		console.log("ATTRIBUTING")
-		locations = localStorage.getItem("Locations")	
+		console.log("GET LOCAL STORAGE: ", localStorage.getItem("Locations"));	
+	}
 	
 	// *********************************************Location Data*********************************************
