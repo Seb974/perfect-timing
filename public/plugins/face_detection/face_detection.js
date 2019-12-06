@@ -76,6 +76,7 @@ function button_callback() {
             // (the constant 50.0 is empirical: other cascades might require a different one)
             if(dets[i][3]>50.0)
             {
+                isHuman = false;
                 var r, c, s;
                 //
                 ctx.beginPath();

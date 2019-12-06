@@ -18,10 +18,12 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script type='text/javascript' src={{ asset('interactive-map/raphael-min.js') }}></script>
     <script type='text/javascript' src={{ asset('interactive-map/worldmap.js') }}></script>
 
-	<style>
+    <style>
 	body {
 		font: .88em/1.53em Arial, Helvetica, sans-serif;
 		margin: 30px auto;
@@ -61,19 +63,70 @@
 		width: 1400px;
 		max-width: 94%;
 	}
-	
+
 	#map {
 		width: 100%;
 	}
-	</style>
-</head>
 
-<body>
-<div id="pagewrap">
-		<h1 id="location_name">City</h1>
-	<div id="map"></div>
-	</div>
-</body>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    #map-example-container {height: 300px};
+
+	</style>
+{% endblock %}
+
+{% block body %}
+
+    <div id="pagewrap">
+            <h1 id="location_name">City</h1>
+        <div id="map"></div>
+        </div>
+
+    <div class="example-wrapper">
+    </div>
+
+    <div id="map-example-container"></div>
+    <input type="search" id="input-map" class="form-control" placeholder="Where are we going?" />
+
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+    <script>
+    (function() {
+    var placesAutocomplete = places({
+        appId: 'pl6124DJ467I',
+        apiKey: 'dac682bc8a0dc7a59f7ada449553bcf9',
+        container: document.querySelector('#input-map')
+    });
+
+    var map = L.map('map-example-container', {
+        scrollWheelZoom: false,
+        zoomControl: false
+    });
+
+    var osmLayer = new L.TileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        minZoom: 1,
+        maxZoom: 13,
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+        }
+    );
+
+    var markers = [];
+
+    map.setView(new L.LatLng(0, 0), 1);
+    map.addLayer(osmLayer);
+
+    placesAutocomplete.on('suggestions', handleOnSuggestions);
+    placesAutocomplete.on('cursorchanged', handleOnCursorchanged);
+    placesAutocomplete.on('change', handleOnChange);
+    placesAutocomplete.on('clear', handleOnClear);
+
+    function handleOnSuggestions(e) {
+        markers.forEach(removeMarker);
+        markers = [];
 
 <div id="myModal" class="modal">
 

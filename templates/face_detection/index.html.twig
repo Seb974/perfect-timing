@@ -14,20 +14,23 @@
 
 <div class="example-wrapper">
 	<script type='text/javascript' > 
-	  var isHuman = false; 
+		var isHuman = null;
+		document.addEventListener("DOMContentLoaded", function() {
+  			button_callback();
+		});
 	</script>
-	
+
 	<span id="timer"></span>
-    <p><center><input class="intergalactic_button" id= "scan" type="button" value="Start webcam feed" onclick="button_callback()"></center></p>
+    {# <p><center><input class="intergalactic_button" id= "scan" type="button" value="Start webcam feed" onclick="button_callback()"></center></p> #}
 	<p><center><canvas width=640 height=480></canvas></center></p>
 
 </div>
 {% endblock %}
 
 {% block js %}
+	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
-	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/face_detection.js') }}"></script>
 {% endblock %}

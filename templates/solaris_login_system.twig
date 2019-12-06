@@ -45,14 +45,11 @@
 </head>
 
 <body>
-    {% include 'layout/navbar.twig.html' %}
-
         <div id="page-container">
           <div id="content-wrap">
             {% block body %}{% endblock %}
            </div>
         </div>
-    {% include 'layout/footer.twig.html' %}
 
     {% block javascripts %}
     <!-- jQuery -->
@@ -68,8 +65,8 @@
     </script>
 
     <script src="{{ asset('plugins/theme/theme.js') }}"></script>
-    {# // <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
-    // <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script> #}
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
 
     <!-- Custom JS -->
         {% if block("js") is defined %}

@@ -1,38 +1,46 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello FaceDetectionController!{% endblock %}
+{% extends 'solaris_login_system.twig' %}
 
 {% block css %}
-	<link rel="stylesheet" href="{{ asset('plugins/face_detection/face_detection.css') }}">
+    <style>
+        body { background-color: #000000 };
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+        <nav id="primary-menu" class="style-4" style="float:none">
+            <ul>
+                <li class="current">
+                    <a href="#" onclick="button_callback()" id="scan">
+                        <div>
+                            <i class="icon-camera"></i>BISOLARIS REPARTITION SYSTEM
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </div>
+    <section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
+        <div class="video-wrap">
+            <video poster="" preload="auto" loop autoplay muted>
+                <source src='video/retina_scan.mp4' type='video/mp4' />
+            </video>
+        </div>
 
-<body>
-<div id="pagewrap">
-		<h1 id="location_name">Hover over a city to see its name</h1>
-	<div id="map"></div>
-		<i><a href="img/credits.txt">Photo Credits</a></i>
-	</div>
-</body>
-
-<div class="example-wrapper">
-	<script type='text/javascript' >
-		var isHuman = false;
-	</script>
-
-	<span id="timer"></span>
-    <p><center><input class="intergalactic_button" id= "scan" type="button" value="Start webcam feed" onclick="button_callback()"></center></p>
-	<p><center><canvas width=640 height=480></canvas></center></p>
-
-</div>
+        <div class="container dark clearfix">
+            <div class="d-flex justify-content-center">
+                <canvas width=640 height=480></canvas>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block js %}
+    <script type='text/javascript'>var isHuman = false;</script>
 	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
