@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>{{ title|default('Perfect Time to Woof') }}</title>
+
+    {% block stylesheets %}
+    <!-- GoogleFont -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="{{ asset('plugins/animate/animate.min.css') }}">
+
+    <!--leaflet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
+
+    <link rel="stylesheet" href="{{ asset('plugins/theme/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/theme/custom.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugins/css/bootstrap.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/style.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/dark.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/travel.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/components/datepicker.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/font-icons.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/animate.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/magnific-popup.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/responsive.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/colors.php?color=AC4147') }}" type="text/css" />
+
+    <!-- Custom CSS -->
+        {% if block("css") is defined %}
+            {% block css %}{% endblock %}
+        {% endif %}
+    {% endblock %}
+</head>
+
+<body>
+        <div id="page-container">
+          <div id="content-wrap">
+            {% block body %}{% endblock %}
+           </div>
+        </div>
+    {% include 'layout/footer.twig.html' %}
+
+    {% block javascripts %}
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <!-- popperJs -->
+    <script src="{{ asset('plugins/popper/popper.min.js') }}"></script>
+
+    <!-- BootstrapJs -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+    <script src="{{ asset('plugins/theme/theme.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+
+    <!-- Custom JS -->
+        {% if block("js") is defined %}
+            {% block js %}{% endblock %}
+        {% endif %}
+    {% endblock %}
+
+</body>
+
+</html>
