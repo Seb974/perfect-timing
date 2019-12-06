@@ -169,11 +169,14 @@
 	}
 	// *********************************************Location Data*********************************************
 	var locations;
-	$.ajax({
-		headers: { 
-			'Accept': 'application/json',
-		},
-		'type': 'GET',
-		'url': '/api/host_placements',
-		'success': function(response) { console.log(response); }
+	$(document).ready(function () {
+
 	});
+	// jQuery.ajax({
+	// 	headers: { 
+	// 		'Accept': 'application/json',
+	// 	},
+	// 	'type': 'GET',
+	// 	'url': '/api/host_placements',
+	// 	'success': function(response) { console.log(response); }
+	// });
