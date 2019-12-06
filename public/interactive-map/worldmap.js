@@ -122,7 +122,7 @@
 				'url': '/api/host_placements',
 				'data': JSON.stringify(new2),
 				'dataType': 'json',
-				'success': function(response) { console.log(response.data); }
+				'success': function(response) { console.log(response); }
 				});
 				window.location.reload();
 				// localStorage.clear();	
