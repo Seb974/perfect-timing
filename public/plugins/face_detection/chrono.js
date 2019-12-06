@@ -1,4 +1,4 @@
-var initial = 300;
+var initial = 3000;
 var count = initial;
 var counter = 10; //10 will  run it every 100th of a second
 
