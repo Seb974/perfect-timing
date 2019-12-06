@@ -36,6 +36,12 @@ class HostPlace
      */
     private $photos;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Activity", inversedBy="hostPlace")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $activity;
+
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
@@ -99,6 +105,18 @@ class HostPlace
                 $photo->setHostPlace(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActivity(): ?Activity
+    {
+        return $this->activity;
+    }
+
+    public function setActivity(?Activity $activity): self
+    {
+        $this->activity = $activity;
 
         return $this;
     }
