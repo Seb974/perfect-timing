@@ -6,6 +6,7 @@
 		window.attachEvent('onload', function(){worldmap()});
 	}
 	var pos;
+	var locations;
 
 	document.addEventListener('click', printMousePos, true);
 	function printMousePos(e){
@@ -43,10 +44,13 @@
 			'type': 'GET',
 			'url': '/api/host_placements',
 			'success': function(response) {
+				var stock;
 				for (o in response) {
-					locations[o] = response[o];
-					console.log(locations[o]);
+					stock[o] = response[o];
+					console.log(stock);
 				}
+				console.log("STRINGIFY: ", JSON.stringify(stock));
+//				localStorage.setItem("Locations", response)
 			}
 		});
 		//create set of locations
@@ -182,4 +186,3 @@
 		
 	}
 	// *********************************************Location Data*********************************************
-	var locations;
