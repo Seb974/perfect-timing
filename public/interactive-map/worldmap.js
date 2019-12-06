@@ -50,8 +50,8 @@
 					console.log(response[o]);
 				}
 				console.log("STRINGIFY: ", JSON.stringify(stock));
-				localStorage.setItem("Locations", JSON.stringify(stock))
-				// localStorage.clear();
+				// localStorage.setItem("Locations", JSON.stringify(stock))
+				localStorage.clear();
 			}
 		});
 		//create set of locations
