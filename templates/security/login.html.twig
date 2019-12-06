@@ -1,42 +1,97 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in!
+{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <div class="container" style="margin-top:50px">
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-4 mx-auto">
+                <div class="card m-b-0">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <i class="fa fa-sign-in"></i>Se connecter
+                        </h4>
+                    </div>
+                    <div class="card-block">
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as
+                                    {{ app.user.username }},
+                                    <a href="{{ path('logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+
+							<div id="fb-root"></div>
+							<script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v4.0&appId=502084787008815&autoLogAppEvents=1"></script>
+							<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
+                            <div class="divider">
+                                <span>ou</span>
+                            </div>
+
+                            <div class="form-group input-icon-left m-b-10">
+                                <i class="fa fa-user"></i>
+                                <label for="inputEmail" class="sr-only">Email</label>
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                            </div>
+
+                            <div class="form-group input-icon-left m-b-15">
+                                <i class="fa fa-lock"></i>
+                                <label for="inputPassword" class="sr-only">Password</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                            </div>
+
+                            {# <label class="custom-control custom-checkbox custom-checkbox-primary">
+                                <input type="checkbox" class="custom-control-input">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Se souvenir de moi</span>
+                            </label> #}
+
+                            <button type="submit" class="btn btn-primary btn-block m-t-10">SE CONNECTER
+                                <i class="fa fa-sign-in"></i>
+                            </button>
+
+                            <div class="divider">
+                                <span>Pas encore client ?</span>
+                            </div>
+                            <a class="btn btn-secondary btn-block" href="/register" role="button">CREER UN COMPTE</a>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endif %}
+    </div>
+{% endblock %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+{% block js %}
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
-
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
-        </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '502084787008815',
+      cookie     : true,
+      xfbml      : true,
+      version    : '4.0'
+    });
+	FB.getLoginStatus(function(response) {
+    	statusChangeCallback(response);
+		console.log( response );
+	});
+    FB.AppEvents.logPageView();
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 {% endblock %}

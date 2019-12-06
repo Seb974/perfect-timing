@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HostPlace{% endblock %}
+
+{% block body %}
+    <h1>HostPlace</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ host_place.id }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ host_place.address }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('host_place_index') }}">back to list</a>
+
+    <a href="{{ path('host_place_edit', {'id': host_place.id}) }}">edit</a>
+
+    {{ include('host_place/_delete_form.html.twig') }}
+{% endblock %}

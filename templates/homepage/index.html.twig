@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ asset('plugins/css/coworking.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('plugins/css/fonts.css') }}" type="text/css" />
+{% endblock %}
+
+{% block title %}
+    Human Homepage
+{% endblock %}
+
+{% block body %}
+	<div class="section p-0 nobg clearfix">
+		<div class="container">
+			<div class="row mb-2">
+				<div class="col-lg-6 col-md-4">
+					<div class="heading-block nobottomborder mb-4">
+						<div class="before-heading">How do you Contact Us</div>
+						<h2 class="nott t600">Best Solaris Locations</h2>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-8">
+					<div class="row">
+						<div class="col-sm-4 col-3">
+							<div class="counter color t600">
+								<span data-from="1" data-to="3" data-refresh-interval="2" data-speed="600">3</span></div>
+							<h5 class="mt-0 t500">Bisolaris farm</h5>
+						</div>
+
+						<div class="col-sm-4 col-6">
+							<div class="counter color t600">
+								<span data-from="100" data-to="4500" data-refresh-interval="100" data-speed="1500">5</span></div>
+							<h5 class="mt-0 t500">EcoFriendly Human</h5>
+						</div>
+
+						<div class="col-sm-4 col-3">
+							<div class="counter color t600">
+								<span data-from="2" data-to="100" data-refresh-interval="30" data-speed="1500">65</span>%</div>
+							<h5 class="mt-0 t500">Objectif to save earth</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="locations-carousel" class="owl-carousel carousel-widget owl-carousel-full clearfix" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="200" data-margin="0" data-nav="true" data-pagi="true" data-items="1" style="display:block">
+			<div>
+				<div class="masonry-thumbs grid-4" data-big="2" data-lightbox="gallery">
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/1.jpg" alt="Gallery Thumb 1">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/2.jpg" alt="Gallery Thumb 12">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/3.jpg" alt="Gallery Thumb 3">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/4.jpg" alt="Gallery Thumb 4">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/5.jpg" alt="Gallery Thumb 5">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/6.jpg" alt="Gallery Thumb 6">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/7.jpg" alt="Gallery Thumb 7">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/8.jpg" alt="Gallery Thumb 13">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/9.jpg" alt="Gallery Thumb 6">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/10.jpg" alt="Gallery Thumb 7">
+                    </a>
+					<a href="#" data-lightbox="gallery-item">
+                        <img src="images/location/thumbs/11.jpg" alt="Gallery Thumb 12">
+                    </a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="{{ asset('js/plugins.js') }}"></script>
+{% endblock %}
