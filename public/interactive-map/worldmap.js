@@ -48,7 +48,7 @@
 		for (o in stock) {
 			console.log(o);
 		}
-		console.log("PARSED: ", locations);
+		console.log("PARSED: ", stock);
 		//create set of locations
 		var location_set=paper.set();
 		
