@@ -35,6 +35,15 @@
 		
 		var map=paper.path(map_path).attr({fill: 'purple', stroke: 'blue'}).scale(scale, scale, 0, 0);
 		map.click(click);
+		console.log("RELOADED");
+		jQuery.ajax({
+			headers: { 
+				'Accept': 'application/json',
+			},
+			'type': 'GET',
+			'url': '/api/host_placements',
+			'success': function(response) { console.log(response); }
+		});
 		//create set of locations
 		var location_set=paper.set();
 		
@@ -169,14 +178,3 @@
 	}
 	// *********************************************Location Data*********************************************
 	var locations;
-	$(document).ready(function () {
-
-	});
-	// jQuery.ajax({
-	// 	headers: { 
-	// 		'Accept': 'application/json',
-	// 	},
-	// 	'type': 'GET',
-	// 	'url': '/api/host_placements',
-	// 	'success': function(response) { console.log(response); }
-	// });
