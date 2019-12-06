@@ -6,7 +6,6 @@
 		window.attachEvent('onload', function(){worldmap()});
 	}
 	var pos;
-	var locations;
 
 	document.addEventListener('click', printMousePos, true);
 	function printMousePos(e){
@@ -188,8 +187,11 @@
 		}
 		
 	}
+	var locations;
+
 	console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
 	if (localStorage.getItem("Locations") !== null)
+		console.log("ATTRIBUTING")
 		locations = localStorage.getItem("Locations")
 
 	// *********************************************Location Data*********************************************
