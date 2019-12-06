@@ -1,14 +1,17 @@
-var initial = 500;
-var count   = initial;
-var counter = 10; //10 will run it every 100th of a second
+var initial = 300;
+var count = initial;
+var counter = 10; //10 will  run it every 100th of a second
 
 function timer() {
-    if (count <= 0 || isHuman == true ) {
+    if (count <= 0 || isHuman == true) {
         clearInterval(counter);
-        if (isHuman == true)
-            location.href="/humanpage";
-        else
-            location.href="/alienpage";
+        if (isHuman == true) {
+            location.href="/";
+        }
+        else {
+            location.href="/login";
+        }
+        clearInterval(counter);
         return;
     }
     count -= 2;
@@ -20,10 +23,9 @@ function displayCount(count) {
     document.getElementById("timer").innerHTML = res.toPrecision(count.toString().length) + " secs";
 }
 
-$('#scan').on('click', function () {
-    clearInterval(counter);
-    console.log(counter);
-    counter = setInterval(timer, 10);
-});
+counter = window.setInterval(counter = function() {
+    if (isHuman !=null)
+        timer();
+}, 10);
 
 displayCount(initial);
