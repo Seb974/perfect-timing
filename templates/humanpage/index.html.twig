@@ -224,15 +224,13 @@
 		});
 	</script>
 
-    	<script src="../../js/functions.js"></script>
-	<script>
-		$(function() {
-            var bodyRect = document.body.getBoundingClientRect(),
-            elemRect = element.getBoundingClientRect(),
-            offset = elementRect.top - bodyRect.top;
+    <script src="../../js/functions.js"></script>
 
-            alert('Element is' + offset + 'vertical pixel from <body>');
-		});
+	<script>
+        var bodyRect = document.body.getBoundingClientRect(),
+            elemRect = element.getBoundingClientRect(),
+              offset = elementRect.top - bodyRect.top;
+        alert('Element is' + offset + 'vertical pixel from <body>');
 	</script>
 
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
