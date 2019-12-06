@@ -47,18 +47,19 @@
 				var stock = {};
 				var i = 0;
 				for (o in response) {
-					locations[i] = response[o]
+					stock[i] = response[o]
 					i += 1;
 					console.log(response[o]);
 				}
 				console.log("STRINGIFY: ", JSON.stringify(stock));
-//				localStorage.setItem("Locations", response)
+				localStorage.setItem("Locations", stock)
 			}
 		});
 		//create set of locations
 		var location_set=paper.set();
 		
 		//create locations
+		console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
 		for (var location in locations){
 			var loc=locations[location];
 			var xy=get_xy(loc.lat, loc.lng);
@@ -97,7 +98,7 @@
 			var modal = document.getElementById("myModal");
 			var span = document.getElementsByClassName("close")[0];
 			var ok = document.getElementsByClassName("ok")[0];
-			let new2 = { 
+			let new2 = {
 				name: 'TEST',
 				lat: pos.y, // y
 				lng: pos.x, // x
