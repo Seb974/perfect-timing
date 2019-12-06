@@ -669,7 +669,6 @@ img {
 
 #page-container {
   position: relative;
-  min-height: 100vh;
 }
 
 #content-wrap {
@@ -677,7 +676,7 @@ img {
 }
 
 #footer .footer-title {
-  color: #fff;
+  color: #cc3342;
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
