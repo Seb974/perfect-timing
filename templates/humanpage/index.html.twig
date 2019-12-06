@@ -284,6 +284,21 @@
 		});
 	</script>
 
+
+    <script>
+        var pub = false;
+        var scrollPos = 0;
+        document.addEventListener('scroll', handleScroll);
+        function handleScroll(){
+            var element = document.querySelector('#candidateButton').getBoundingClientRect();
+            if ((document.body.getBoundingClientRect()).top < scrollPos && element.bottom < 0 && pub == false) {
+                pub = true;
+                alert('PUBLICITE : Viens voir le docteur !');
+            }
+            scrollPos = (document.body.getBoundingClientRect()).top;
+        };
+	</script>
+
     <script text='text/javascript'>
         var modal = document.getElementById("myModal");
 
