@@ -37,6 +37,7 @@ class UserController extends AbstractController
 		$api['ALGOLIA_APIKEY'] = $_ENV['ALGOLIA_APIKEY'];
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setAddress($request->request->get('algoliaBar'));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();

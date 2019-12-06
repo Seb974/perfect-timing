@@ -44,18 +44,24 @@ class UserType extends AbstractType
                   ])
               ]
           ])
-            ->add('address', TextType::class, [
-                'required' => true,
-                'attr' => ['class' => 'input-map']
+            // ->add('address', TextType::class, [
+            //     'required' => true,
+            //     'attr' => ['id' => 'input-map']
+            // ])
+            ->add('latitude', NumberType::class, [
+                'mapped' => true,
+                'required' => false,
+                'attr' => ['class' => 'latitude',
+                           'hidden' => true
+                          ],
             ])
-            // ->add('latitude', NumberType::class, [
-            //     'mapped' => false,
-            //     'required' => false,
-            // ])
-            // ->add('longitude', NumberType::class, [
-            //     'mapped' => false,
-            //     'required' => false,
-            // ])
+            ->add('longitude', NumberType::class, [
+                'mapped' => true,
+                'required' => false,
+                'attr' => ['class' => 'longitude',
+                           'hidden' => true
+            ],
+            ])
             ->add('roles', ChoiceType::class, [
                 'choices'  => [
                     'human' => "ROLE_HUMAN",
