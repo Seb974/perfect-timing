@@ -3745,7 +3745,7 @@ body:not(.device-touch) .portfolio {
 .portfolio-item {
 	float: left;
 	position: relative;
-	width: 25%;
+	width: 33%;
 	height: auto;
 	padding: 0 12px 12px 0;
 }
