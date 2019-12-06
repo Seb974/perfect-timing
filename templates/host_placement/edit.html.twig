@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit HostPlacement{% endblock %}
+
+{% block body %}
+    <h1>Edit HostPlacement</h1>
+
+    {{ include('host_placement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('host_placement_index') }}">back to list</a>
+
+    {{ include('host_placement/_delete_form.html.twig') }}
+{% endblock %}

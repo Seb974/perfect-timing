@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HostPlacement{% endblock %}
+
+{% block body %}
+    <h1>HostPlacement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ host_placement.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ host_placement.name }}</td>
+            </tr>
+            <tr>
+                <th>Lat</th>
+                <td>{{ host_placement.lat }}</td>
+            </tr>
+            <tr>
+                <th>Lng</th>
+                <td>{{ host_placement.lng }}</td>
+            </tr>
+            <tr>
+                <th>Color</th>
+                <td>{{ host_placement.color }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ host_placement.url }}</td>
+            </tr>
+            <tr>
+                <th>Descp</th>
+                <td>{{ host_placement.descp }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('host_placement_index') }}">back to list</a>
+
+    <a href="{{ path('host_placement_edit', {'id': host_placement.id}) }}">edit</a>
+
+    {{ include('host_placement/_delete_form.html.twig') }}
+{% endblock %}

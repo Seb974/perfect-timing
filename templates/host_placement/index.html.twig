@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HostPlacement index{% endblock %}
+
+{% block body %}
+    <h1>HostPlacement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Lat</th>
+                <th>Lng</th>
+                <th>Color</th>
+                <th>Url</th>
+                <th>Descp</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for host_placement in host_placements %}
+            <tr>
+                <td>{{ host_placement.id }}</td>
+                <td>{{ host_placement.name }}</td>
+                <td>{{ host_placement.lat }}</td>
+                <td>{{ host_placement.lng }}</td>
+                <td>{{ host_placement.color }}</td>
+                <td>{{ host_placement.url }}</td>
+                <td>{{ host_placement.descp }}</td>
+                <td>
+                    <a href="{{ path('host_placement_show', {'id': host_placement.id}) }}">show</a>
+                    <a href="{{ path('host_placement_edit', {'id': host_placement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('host_placement_new') }}">Create new</a>
+{% endblock %}
