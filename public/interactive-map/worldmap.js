@@ -44,8 +44,10 @@
 			'type': 'GET',
 			'url': '/api/host_placements',
 			'success': function(response) {
-				var stock;
+				var stock = {};
+				var i = 0;
 				for (o in response) {
+					stock[i] = response[o]
 					console.log(response[o]);
 				}
 				console.log("STRINGIFY: ", JSON.stringify(stock));
