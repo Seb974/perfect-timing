@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EcoLevel index{% endblock %}
+
+{% block body %}
+    <h1>EcoLevel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Level</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for eco_level in eco_levels %}
+            <tr>
+                <td>{{ eco_level.id }}</td>
+                <td>{{ eco_level.level }}</td>
+                <td>
+                    <a href="{{ path('eco_level_show', {'id': eco_level.id}) }}">show</a>
+                    <a href="{{ path('eco_level_edit', {'id': eco_level.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('eco_level_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EcoLevel{% endblock %}
+
+{% block body %}
+    <h1>EcoLevel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ eco_level.id }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ eco_level.level }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('eco_level_index') }}">back to list</a>
+
+    <a href="{{ path('eco_level_edit', {'id': eco_level.id}) }}">edit</a>
+
+    {{ include('eco_level/_delete_form.html.twig') }}
+{% endblock %}

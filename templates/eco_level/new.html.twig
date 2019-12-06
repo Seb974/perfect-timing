@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EcoLevel{% endblock %}
+
+{% block body %}
+    <h1>Create new EcoLevel</h1>
+
+    {{ include('eco_level/_form.html.twig') }}
+
+    <a href="{{ path('eco_level_index') }}">back to list</a>
+{% endblock %}
