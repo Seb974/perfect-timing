@@ -42,8 +42,9 @@
 			},
 			'type': 'GET',
 			'url': '/api/host_placements',
-			'success': function(response) { console.log(response); }
+			'success': function(response) { console.log(response); locations = JSON.parse(response); }
 		});
+		console.log("PARSED: ", locations);
 		//create set of locations
 		var location_set=paper.set();
 		
