@@ -36,14 +36,18 @@
 		var map=paper.path(map_path).attr({fill: 'purple', stroke: 'blue'}).scale(scale, scale, 0, 0);
 		map.click(click);
 		console.log("RELOADED");
+		var stock;
 		jQuery.ajax({
 			headers: { 
 				'Accept': 'application/json',
 			},
 			'type': 'GET',
 			'url': '/api/host_placements',
-			'success': function(response) { console.log(response); locations = JSON.parse(response); }
+			'success': function(response) { console.log(response); stock = response;}
 		});
+		for (o in stock) {
+			console.log(o);
+		}
 		console.log("PARSED: ", locations);
 		//create set of locations
 		var location_set=paper.set();
