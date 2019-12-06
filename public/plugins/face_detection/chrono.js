@@ -6,10 +6,10 @@ function timer() {
     if (count <= 0 || isHuman == true) {
         clearInterval(counter);
         if (isHuman == true) {
-            location.href="/";
+            location.href="/humanpage";
         }
         else {
-            location.href="/login";
+            location.href="/alienpage";
         }
         clearInterval(counter);
         return;
