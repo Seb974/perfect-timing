@@ -47,7 +47,7 @@
 				var stock = {};
 				var i = 0;
 				for (o in response) {
-					stock[i] = response[o]
+					locations[i] = response[o]
 					i += 1;
 					console.log(response[o]);
 				}
