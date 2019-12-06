@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}Hello FaceDetectionController!{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ asset('plugins/face_detection/face_detection.css') }}">
+{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +13,21 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<script type='text/javascript' >
+	  var isHuman = false;
+	</script>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your Hello world controller at <code><a href="{{ '/home/yen/Dropbox (NIGAO)/CoDaC/Repo/Webcup2019/perfect-timing/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/yen/Dropbox (NIGAO)/CoDaC/Repo/Webcup2019/perfect-timing/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
+	<span id="timer"></span>
+    <p><center><input class="intergalactic_button" id= "scan" type="button" value="Start webcam feed" onclick="button_callback()"></center></p>
+	<p><center><canvas width=640 height=480></canvas></center></p>
+
 </div>
+{% endblock %}
+
+{% block js %}
+	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/face_detection.js') }}"></script>
 {% endblock %}
