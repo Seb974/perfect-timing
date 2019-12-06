@@ -1,14 +1,14 @@
 var initial = 500;
-var count = initial;
+var count   = initial;
 var counter = 10; //10 will  run it every 100th of a second
 
 function timer() {
     if (count <= 0) {
         clearInterval(counter);
         if (isHuman == true)
-            location.href="/";
+            location.href="/humanpage";
         else
-            location.href="/login";
+            location.href="/alienpage";
         return;
     }
     count -= 2;
