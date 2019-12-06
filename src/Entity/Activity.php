@@ -24,7 +24,7 @@ class Activity
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\hostPlace", mappedBy="activity")
+     * @ORM\OneToMany(targetEntity="App\Entity\HostPlace", mappedBy="activity")
      */
     private $hostPlace;
 
@@ -58,7 +58,7 @@ class Activity
         return $this->hostPlace;
     }
 
-    public function addHostPlace(hostPlace $hostPlace): self
+    public function addHostPlace(HostPlace $hostPlace): self
     {
         if (!$this->hostPlace->contains($hostPlace)) {
             $this->hostPlace[] = $hostPlace;
@@ -68,7 +68,7 @@ class Activity
         return $this;
     }
 
-    public function removeHostPlace(hostPlace $hostPlace): self
+    public function removeHostPlace(HostPlace $hostPlace): self
     {
         if ($this->hostPlace->contains($hostPlace)) {
             $this->hostPlace->removeElement($hostPlace);

@@ -22,7 +22,7 @@ class Photo
     private $url;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\hostPlace", inversedBy="photos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\HostPlace", inversedBy="photos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $hostPlace;
