@@ -1,6 +1,6 @@
 var initial = 500;
 var count   = initial;
-var counter = 10; //10 will  run it every 100th of a second
+var counter = 10; //10 will run it every 100th of a second
 
 function timer() {
     if (count <= 0 || isHuman == true ) {
