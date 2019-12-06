@@ -194,6 +194,7 @@
 	console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
 	if (localStorage.getItem("Locations") !== null) {
 		console.log("ATTRIBUTING")
+		locations = JSON.parse(localStorage.getItem("Locations"));
 		console.log("GET LOCAL STORAGE: ", localStorage.getItem("Locations"));	
 	}
 	
