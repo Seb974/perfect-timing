@@ -1,112 +1,277 @@
-{% extends 'base.html.twig' %}
-
 {% block css %}
-	<link rel="stylesheet" href="{{ asset('plugins/css/coworking.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ asset('plugins/css/fonts.css') }}" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
+	<link rel="stylesheet" href="{{ asset('plugins/css/bootstrap.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/style.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/dark.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('travel/travel.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/components/datepicker.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/font-icons.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/animate.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/magnific-popup.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/responsive.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/colors.php?color=AC4147') }}" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <style>
-        #pagewrap {
-            margin: 0 auto;
-            width: 800px;
-            max-width: 94%;
-        }
-
-        #map {
-            width: 100%;
-        }
-
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-
         #map-example-container {height: 300px};
+        #address-value { background-color: #CC3342 };
     </style>
-
-{% endblock %}
-
-{% block title %}
-    Human Homepage
 {% endblock %}
 
 {% block body %}
-    <div id="pagewrap">
-        <div id="map"></div>
-    </div>
+    {# {% include 'layout/navbar.twig.html' %} #}
+		<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
 
-    <div class="example-wrapper">
-    </div>
+			<div class="video-wrap">
+				<video poster="travel/images/videos/1.jpg" preload="auto" loop autoplay muted>
+					<source src='video/spacex.mp4' type='video/mp4' />
+				</video>
+			</div>
 
-	<div class="section p-0 nobg clearfix">
-		<div class="container">
-			<div class="row mb-2">
-				<div class="col-lg-6 col-md-4">
-					<div class="heading-block nobottomborder mb-4">
-						<div class="before-heading">How do you Contact Us</div>
-						<h2 class="nott t600">Best Solaris Locations</h2>
-					</div>
+			<div class="container dark clearfix">
+				<div class="heading-block center topmargin nobottomborder">
+					<h3 data-animate="fadeInUp">EMBARQUEZ POUR BISOLARIS</h3>
+                    Conçu pour mesurer et améliorer les connaissances de l'humanité en matière de durabilité
+                    PerfectTiming est la meilleure façon de montrer que vous croyez que l'avenir du monde
+                    est la responsabilité de chacun.
 				</div>
 
-				<div class="col-lg-6 col-md-8">
+				<form action="#" method="post" class="divcenter landing-wide-form clearfix nobottommargin" style="max-width: 1000px">
 					<div class="row">
-						<div class="col-sm-4 col-3">
-							<div class="counter color t600">
-								<span data-from="1" data-to="3" data-refresh-interval="2" data-speed="600">3</span></div>
-							<h5 class="mt-0 t500">Bisolaris farm</h5>
+						<div class="col-lg-9 col-md-9 input-daterange travel-date-group">
+							<input type="text" value="" class="form-control form-control-lg not-dark tleft mnth" name="end" placeholder="Je souhaite changer le monde en ...">
 						</div>
-
-						<div class="col-sm-4 col-6">
-							<div class="counter color t600">
-								<span data-from="100" data-to="4500" data-refresh-interval="100" data-speed="1500">5</span></div>
-							<h5 class="mt-0 t500">EcoFriendly Human</h5>
+						<div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
+						<div class="col-lg-3 clearfix">
+							<button class="button btn-lg button-rounded btn-block nomargin" value="submit" type="submit" style="height: 46px">CANDIDATER</button>
 						</div>
+					</div>
+				</form>
+			</div>
+		</section>
 
-						<div class="col-sm-4 col-3">
-							<div class="counter color t600">
-								<span data-from="2" data-to="100" data-refresh-interval="30" data-speed="1500">65</span>%</div>
-							<h5 class="mt-0 t500">Objectif to save earth</h5>
+		<section id="content">
+
+			<div class="content-wrap nopadding">
+
+				<div class="section nomargin">
+					<div class="container clearfix">
+						<div class="heading-block center nobottommargin nobottomborder">
+							<h3>LES WOOF LES PLUS POPULAIRES</h3>
 						</div>
 					</div>
 				</div>
+
+				<div id="portfolio" class="portfolio-nomargin portfolio-full portfolio-overlay-open clearfix">
+
+					<article class="portfolio-item pf-media pf-icons">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/1.jpg" alt="Beach Activities">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Agriculture raisonnée</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/2.jpg" alt="Romantic Getaways">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Préservez le littoral</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics pf-uielements">
+						<div class="portfolio-image">
+							<a href="#">
+								<img src="travel/images/packages/3.jpg" alt="Mountain Madness">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Déforestation</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-icons pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/4.jpg" alt="Active Explorer">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Recenser les espèces</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-uielements pf-media">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/5.jpg" alt="Icy Challenge">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Fonte de la banquise</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics pf-illustrations">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/6.jpg" alt="Hill Trekking">
+								<div class="portfolio-overlay" data-lightbox="gallery">
+									<div class="portfolio-desc">
+										<h3>Rouler plus vert</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-uielements pf-icons">
+						<div class="portfolio-image">
+							<a href="portfolio-single-video.html">
+								<img src="travel/images/packages/7.jpg" alt="Forest Camping">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>Eau potable pour tous</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+					<article class="portfolio-item pf-graphics">
+						<div class="portfolio-image">
+							<a href="portfolio-single.html">
+								<img src="travel/images/packages/8.jpg" alt="River Rafting">
+								<div class="portfolio-overlay">
+									<div class="portfolio-desc">
+										<h3>River Rafting</h3>
+									</div>
+								</div>
+							</a>
+						</div>
+					</article>
+
+				</div>
+
 			</div>
-		</div>
-		<div id="locations-carousel" class="owl-carousel carousel-widget owl-carousel-full clearfix" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="200" data-margin="0" data-nav="true" data-pagi="true" data-items="1" style="display:block">
-			<div>
-				<div class="masonry-thumbs grid-4" data-big="2" data-lightbox="gallery">
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=1" alt="Gallery Thumb 1">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=2" alt="Gallery Thumb 12">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=3" alt="Gallery Thumb 3">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=4" alt="Gallery Thumb 4">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=5" alt="Gallery Thumb 5">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=6" alt="Gallery Thumb 6">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=7" alt="Gallery Thumb 7">
-                    </a>
-					<a href="#" data-lightbox="gallery-item">
-                        <img src="https://loremflickr.com/320/240/farm?random=8" alt="Gallery Thumb 8">
-                    </a>
+
+		</section>
+
+		<footer id="footer" class="dark" style="background-color: #222;">
+			<div id="copyrights">
+				<div class="container clearfix">
+					<div class="col_half">
+						Copyleft &copy; 2019 Perfect Timing Webcup reunion 2019.<br>
+					</div>
+					<div class="col_half col_last tright">
+						<div class="fright clearfix">
+							<a href="#" class="social-icon si-small si-borderless si-facebook">
+								<i class="icon-facebook"></i>
+								<i class="icon-facebook"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-twitter">
+								<i class="icon-twitter"></i>
+								<i class="icon-twitter"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-gplus">
+								<i class="icon-gplus"></i>
+								<i class="icon-gplus"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-pinterest">
+								<i class="icon-pinterest"></i>
+								<i class="icon-pinterest"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-vimeo">
+								<i class="icon-vimeo"></i>
+								<i class="icon-vimeo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-github">
+								<i class="icon-github"></i>
+								<i class="icon-github"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-yahoo">
+								<i class="icon-yahoo"></i>
+								<i class="icon-yahoo"></i>
+							</a>
+
+							<a href="#" class="social-icon si-small si-borderless si-linkedin">
+								<i class="icon-linkedin"></i>
+								<i class="icon-linkedin"></i>
+							</a>
+						</div>
+
+						<div class="clear"></div>
+
+						<i class="icon-envelope2"></i> info@bisolaris.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-solaris-11-6541-constellation
+					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 	</div>
 
 {% endblock %}
 
 {% block js %}
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/plugins.js') }}"></script>
-    <script type='text/javascript' src={{ asset('interactive-map/raphael-min.js') }}></script>
-    <script type='text/javascript' src={{ asset('interactive-map/worldmap.js') }}></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+
+	<script src="../../js/jquery.js"></script>
+	<script src="../../js/plugins.js"></script>
+	<script src="../../js/components/datepicker.js"></script>
+	<script src="../../js/functions.js"></script>
+	<script>
+		$(function() {
+			$('.travel-date-group').datepicker({
+				autoclose: true,
+				startDate: "today",
+				minViewMode: 1,
+				format: "M-yyyy"
+			});
+		});
+	</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+    <script>
+        (function() {
+        var placesAutocomplete = places({
+                appId: 'pl6124DJ467I',
+                apiKey: 'dac682bc8a0dc7a59f7ada449553bcf9',
+            container: document.querySelector('#address')
+        });
+
+        var $address = document.querySelector('#address-value')
+        placesAutocomplete.on('change', function(e) {
+            $address.textContent = e.suggestion.value
+        });
+
+        placesAutocomplete.on('clear', function() {
+            $address.textContent = 'none';
+        });
+
+        })();
+    </script>
 {% endblock %}
