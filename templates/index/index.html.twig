@@ -1,9 +1,8 @@
 {% extends 'solaris_login_system.twig' %}
 
-{% block title %}Hello FaceDetectionController!{% endblock %}
-
 {% block css %}
     <style>
+        body { background-color: #000000 };
         .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
     </style>
@@ -12,22 +11,32 @@
 {% block body %}
     <div class="container">
         <div class="d-flex justify-content-center">
-            <nav id="primary-menu" class="style-4" style="float:none">
-                <ul>
-                    <li class="current">
-                        <a href="#" onclick="button_callback()" id="scan">
-                            <div>
-                                <i class="icon-camera"></i>SOLARIS LOGIN SYSTEM <span id="timer" style="display:inline"></span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <div class="d-flex justify-content-center">
-            <canvas width=640 height=480></canvas>
-        </div>
+        <nav id="primary-menu" class="style-4" style="float:none">
+            <ul>
+                <li class="current">
+                    <a href="#" onclick="button_callback()" id="scan">
+                        <div>
+                            <i class="icon-camera"></i>BISOLARIS REPARTITION SYSTEM
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
+    </div>
+    <section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
+        <div class="video-wrap">
+            <video poster="" preload="auto" loop autoplay muted>
+                <source src='video/retina_scan.mp4' type='video/mp4' />
+            </video>
+        </div>
+
+        <div class="container dark clearfix">
+            <div class="d-flex justify-content-center">
+                <canvas width=640 height=480></canvas>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block js %}
