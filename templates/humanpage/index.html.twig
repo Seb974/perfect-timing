@@ -45,7 +45,7 @@
 						</div>
 						<div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
 						<div class="col-lg-3 clearfix">
-							<button class="button btn-lg button-rounded btn-block nomargin" value="submit" type="submit" style="height: 46px">CANDIDATER</button>
+							<button class="button btn-lg button-rounded btn-block nomargin" id="candidateButton" value="submit" type="submit" style="height: 46px">CANDIDATER</button>
 						</div>
 					</div>
 				</form>
@@ -226,11 +226,18 @@
 
     <script src="../../js/functions.js"></script>
 
-	<script>
-        var bodyRect = document.body.getBoundingClientRect(),
-            elemRect = element.getBoundingClientRect(),
-              offset = elementRect.top - bodyRect.top;
-        alert('Element is' + offset + 'vertical pixel from <body>');
+    <script>
+        var pub = false;
+        var scrollPos = 0;
+        document.addEventListener('scroll', handleScroll);
+        function handleScroll(){
+            var element = document.querySelector('#candidateButton').getBoundingClientRect();
+            if ((document.body.getBoundingClientRect()).top < scrollPos && element.bottom < 0 && pub == false) {
+                pub = true;
+                alert('PUBLICITE : Viens voir le docteur !');
+            }
+            scrollPos = (document.body.getBoundingClientRect()).top;
+        };
 	</script>
 
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
