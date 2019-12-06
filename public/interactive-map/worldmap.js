@@ -124,9 +124,7 @@
 				'dataType': 'json',
 				'success': function(response) { console.log(response.data); }
 				});
-				localStorage.setItem('Locations', strLoc);
-				// window.location.reload();
-				// console.log("MOUSE POS: ", document.body.textContent);
+				window.location.reload();
 				// localStorage.clear();	
 			}
 			// When the user clicks anywhere outside of the modal, close it
@@ -169,12 +167,13 @@
 		}
 		
 	}
-			
-	
 	// *********************************************Location Data*********************************************
 	var locations;
-	if (localStorage.getItem("Locations") != null) {
-		locations = JSON.parse(localStorage.getItem("Locations"));
-	} else {
-		console.log("Local Storage: ", "EMPTY");
-	}
+	$.ajax({
+		headers: { 
+			'Accept': 'application/json',
+		},
+		'type': 'GET',
+		'url': '/api/host_placements',
+		'success': function(response) { console.log(response); }
+	});
