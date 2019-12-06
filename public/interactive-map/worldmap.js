@@ -113,36 +113,37 @@
 				}
 				var strLoc = JSON.stringify(locations);
 				test2 = JSON.stringify(new2);
-				$.ajax({
-				headers: { 
-					'Accept': 'application/json',
-					'Content-Type': 'application/json' 
-				},
-				'type': 'POST',
-				'url': '/api/host_placements',
-				'data': JSON.stringify(new2),
-				'dataType': 'json',
-				'success': function(response) {
-					jQuery.ajax({
-						headers: { 
-							'Accept': 'application/json',
-						},
-						'type': 'GET',
-						'url': '/api/host_placements',
-						'success': function(response) {
-							var stock = {};
-							var i = 0;
-							for (o in response) {
-								stock[i] = response[o];
-								i += 1;
-								console.log(response[o]);
-							}
-							console.log("STRINGIFY: ", JSON.stringify(stock));
-							localStorage.setItem("Locations", JSON.stringify(stock))
-						}
-					});			
-				}
-				});
+				localStorage.setItem("Locations", strLoc);
+				// $.ajax({
+				// headers: { 
+				// 	'Accept': 'application/json',
+				// 	'Content-Type': 'application/json' 
+				// },
+				// 'type': 'POST',
+				// 'url': '/api/host_placements',
+				// 'data': JSON.stringify(new2),
+				// 'dataType': 'json',
+				// 'success': function(response) {
+				// 	jQuery.ajax({
+				// 		headers: { 
+				// 			'Accept': 'application/json',
+				// 		},
+				// 		'type': 'GET',
+				// 		'url': '/api/host_placements',
+				// 		'success': function(response) {
+				// 			var stock = {};
+				// 			var i = 0;
+				// 			for (o in response) {
+				// 				stock[i] = response[o];
+				// 				i += 1;
+				// 				console.log(response[o]);
+				// 			}
+				// 			console.log("STRINGIFY: ", JSON.stringify(stock));
+				// 			localStorage.setItem("Locations", JSON.stringify(stock))
+				// 		}
+				// 	});			
+				// }
+				// });
 				window.location.reload();
 				// localStorage.clear();	
 			}
