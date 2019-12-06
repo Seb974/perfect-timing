@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AlienPageController extends AbstractController
 {
     /**
-     * @Route("/alien/page", name="alien_page")
+     * @Route("/alienpage", name="alien_page")
      */
     public function index()
     {
