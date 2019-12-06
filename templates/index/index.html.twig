@@ -10,17 +10,14 @@
 
 {% block body %}
     <div class="container">
+        <script type='text/javascript' > 
+    		var isHuman = null;
+    		document.addEventListener("DOMContentLoaded", function() {
+      			button_callback();
+    		});
+    	</script>
         <div class="d-flex justify-content-center">
         <nav id="primary-menu" class="style-4" style="float:none">
-            <ul>
-                <li class="current">
-                    <a href="#" onclick="button_callback()" id="scan">
-                        <div>
-                            <i class="icon-camera"></i>BISOLARIS REPARTITION SYSTEM
-                        </div>
-                    </a>
-                </li>
-            </ul>
         </nav>
     </div>
     </div>
@@ -41,9 +38,9 @@
 
 {% block js %}
     <script type='text/javascript'>var isHuman = false;</script>
+	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
-	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/face_detection.js') }}"></script>
 {% endblock %}
