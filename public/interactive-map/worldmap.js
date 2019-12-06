@@ -36,7 +36,6 @@
 		
 		var map=paper.path(map_path).attr({fill: 'purple', stroke: 'blue'}).scale(scale, scale, 0, 0);
 		map.click(click);
-		console.log("RELOADED");
 		jQuery.ajax({
 			headers: { 
 				'Accept': 'application/json',
@@ -62,6 +61,7 @@
 		//create locations
 		for (var location in locations){
 			var loc=locations[location];
+			console.log("NAME: ", loc.name);
 			var xy=get_xy(loc.lat, loc.lng);
 			console.log("XY: ", xy);
 			var loc_obj=paper.circle(xy.x, xy.y, 10).attr({id: 'myBtn', fill: loc.color, stroke: 'white', 'stroke-width': 2, cursor: 'pointer'}).scale(scale, scale, 0, 0);
