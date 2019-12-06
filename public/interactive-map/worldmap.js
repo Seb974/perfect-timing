@@ -61,6 +61,8 @@
 		
 		//create locations
 		console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
+		if (localStorage.getItem("Locations") !== null)
+			locations = localStorage.getItem("Locations")
 		for (var location in locations){
 			var loc=locations[location];
 			var xy=get_xy(loc.lat, loc.lng);
