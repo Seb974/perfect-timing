@@ -1,7 +1,5 @@
 {% block css %}
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
-    <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
 	<link rel="stylesheet" href="{{ asset('plugins/css/bootstrap.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('plugins/css/style.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('plugins/css/dark.css') }}" type="text/css" />
@@ -13,207 +11,269 @@
 	<link rel="stylesheet" href="{{ asset('plugins/css/responsive.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('plugins/css/colors.php?color=AC4147') }}" type="text/css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <style>
-        #map-example-container {height: 300px};
-        #address-value { background-color: #CC3342 };
-    </style>
 {% endblock %}
 
 {% block body %}
     {# {% include 'layout/navbar.twig.html' %} #}
-		<section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">modal publicite</button>
 
-			<div class="video-wrap">
-				<video poster="travel/images/videos/1.jpg" preload="auto" loop autoplay muted>
-					<source src='video/spacex.mp4' type='video/mp4' />
-				</video>
-			</div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+            <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="Wrapper">
+                    <div class="Input">
+                        <input font-size: 1px type="text" id="Text1" class="Input-text" placeholder="Name of the farm">
+                        <label for="input" class="Input-label">Farm name</label>
+                    </div>
+                </div>
+                <div class="Wrapper">
+                    <div class="Input">
+                        <input font-size: 1px type="text" id="Text2" class="Input-text" placeholder="Color of the dot (ex: red, blue, pink...)">
+                        <label for="input" class="Input-label">Color</label>
+                    </div>
+                </div>
+                <div class="Wrapper">
+                    <div class="Input">
+                        <input font-size: 1px type="text" id="Text3" class="Input-text" placeholder="Link to the image you want to put">
+                        <label for="input" class="Input-label">Image url</label>
+                    </div>
+                </div>
+                <div class="Wrapper">
+                    <div class="Input">
+                        <input font-size: 1px type="text" id="Text4" class="Input-text" placeholder="Description of the woof">
+                        <label for="input" class="Input-label">Put a description here</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <span class="ok">ok</span>
+            </div>
+        </div>
+    </div>
 
-			<div class="container dark clearfix">
-				<div class="heading-block center topmargin nobottomborder">
-					<h3 data-animate="fadeInUp">EMBARQUEZ POUR BISOLARIS</h3>
-                    Conçu pour mesurer et améliorer les connaissances de l'humanité en matière de durabilité
-                    PerfectTiming est la meilleure façon de montrer que vous croyez que l'avenir du monde
-                    est la responsabilité de chacun.
-				</div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Overflowing text to show scroll behavior</h4>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                        <p class="nobottommargin">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
 
-				<form action="#" method="post" class="divcenter landing-wide-form clearfix nobottommargin" style="max-width: 1000px">
-					<div class="row">
-						<div class="col-lg-9 col-md-9 input-daterange travel-date-group">
-							<input type="text" value="" class="form-control form-control-lg not-dark tleft mnth" name="end" placeholder="Je souhaite changer le monde en ...">
-						</div>
-						<div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
-						<div class="col-lg-3 clearfix">
-							<button class="button btn-lg button-rounded btn-block nomargin" value="submit" type="submit" style="height: 46px">CANDIDATER</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</section>
+        <div class="video-wrap">
+            <video poster="" preload="auto" loop autoplay muted>
+                <source src='video/spacex.mp4' type='video/mp4' />
+            </video>
+        </div>
 
-		<section id="content">
+        <div class="container dark clearfix">
+            <div class="heading-block center topmargin nobottomborder">
+                <h3 data-animate="fadeInUp">EMBARQUEZ POUR BISOLARIS</h3>
+                <div>Conçu pour mesurer et améliorer les connaissances de l'humanité en matière de durabilité</div>
+                <div>PerfectTiming est la meilleure façon de montrer que vous croyez que l'avenir du monde</div>
+                <div>est la responsabilité de chacun et qu'il est temp d'agir.</div>
+            </div>
 
-			<div class="content-wrap nopadding">
+            <form action="#" method="post" class="divcenter landing-wide-form clearfix nobottommargin" style="max-width: 1000px">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 input-daterange travel-date-group">
+                        <input type="text" value="" class="form-control form-control-lg not-dark tleft mnth" name="end" placeholder="Je souhaite changer le monde en ...">
+                    </div>
+                    <div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
+                    <div class="col-lg-3 clearfix">
+                        <button class="button btn-lg button-rounded btn-block nomargin" value="submit" type="submit" style="height: 46px">CANDIDATER</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 
-				<div class="section nomargin">
-					<div class="container clearfix">
-						<div class="heading-block center nobottommargin nobottomborder">
-							<h3>LES WOOF LES PLUS POPULAIRES</h3>
-						</div>
-					</div>
-				</div>
+    <section id="content">
+        <div class="content-wrap nopadding">
+            <div id="portfolio" class="portfolio-nomargin portfolio-full portfolio-overlay-open clearfix">
+                <article class="portfolio-item pf-uielements pf-media">
+                    <div class="portfolio-image">
+                        <a href="portfolio-single.html">
+                            <img src="travel/images/packages/5.jpg" alt="Icy Challenge">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-desc">
+                                    <h3>Fonte de la banquise</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
 
-				<div id="portfolio" class="portfolio-nomargin portfolio-full portfolio-overlay-open clearfix">
-                    <article class="portfolio-item pf-uielements pf-media">
-						<div class="portfolio-image">
-							<a href="portfolio-single.html">
-								<img src="travel/images/packages/5.jpg" alt="Icy Challenge">
-								<div class="portfolio-overlay">
-									<div class="portfolio-desc">
-										<h3>Fonte de la banquise</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
+                <article class="portfolio-item pf-graphics pf-uielements">
+                    <div class="portfolio-image">
+                        <a href="#">
+                            <img src="travel/images/packages/3.jpg" alt="Mountain Madness">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-desc">
+                                    <h3>fermes et agriculture en foret</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
 
-					<article class="portfolio-item pf-graphics pf-uielements">
-						<div class="portfolio-image">
-							<a href="#">
-								<img src="travel/images/packages/3.jpg" alt="Mountain Madness">
-								<div class="portfolio-overlay">
-									<div class="portfolio-desc">
-										<h3>fermes et agriculture en foret</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
+                <article class="portfolio-item pf-icons pf-illustrations">
+                    <div class="portfolio-image">
+                        <a href="portfolio-single.html">
+                            <img src="travel/images/packages/4.jpg" alt="Active Explorer">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-desc">
+                                    <h3>Recenser les espèces</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
 
-					<article class="portfolio-item pf-icons pf-illustrations">
-						<div class="portfolio-image">
-							<a href="portfolio-single.html">
-								<img src="travel/images/packages/4.jpg" alt="Active Explorer">
-								<div class="portfolio-overlay">
-									<div class="portfolio-desc">
-										<h3>Recenser les espèces</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
+                <article class="portfolio-item pf-illustrations">
+                    <div class="portfolio-image">
+                        <a href="portfolio-single.html">
+                            <img src="travel/images/packages/2.jpg" alt="Romantic Getaways">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-desc">
+                                    <h3>Préserver son littoral</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
 
-					<article class="portfolio-item pf-illustrations">
-						<div class="portfolio-image">
-							<a href="portfolio-single.html">
-								<img src="travel/images/packages/2.jpg" alt="Romantic Getaways">
-								<div class="portfolio-overlay">
-									<div class="portfolio-desc">
-										<h3>Préserver son littoral</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
+                <article class="portfolio-item pf-graphics pf-illustrations">
+                    <div class="portfolio-image">
+                        <a href="portfolio-single.html">
+                            <img src="travel/images/packages/6.jpg" alt="Hill Trekking">
+                            <div class="portfolio-overlay" data-lightbox="gallery">
+                                <div class="portfolio-desc">
+                                    <h3>Rouler plus vert</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
 
-					<article class="portfolio-item pf-graphics pf-illustrations">
-						<div class="portfolio-image">
-							<a href="portfolio-single.html">
-								<img src="travel/images/packages/6.jpg" alt="Hill Trekking">
-								<div class="portfolio-overlay" data-lightbox="gallery">
-									<div class="portfolio-desc">
-										<h3>Rouler plus vert</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
+                <article class="portfolio-item pf-uielements pf-icons">
+                    <div class="portfolio-image">
+                        <a href="portfolio-single-video.html">
+                            <img src="travel/images/packages/7.jpg" alt="Forest Camping">
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-desc">
+                                    <h3>Eau potable pour tous</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="section nomargin">
+            <div class="container clearfix">
+                <div class="heading-block center nobottommargin nobottomborder">
+                    <h3>BISOLARIS EN TEMPS REEL</h3>
+                </div>
+            </div>
+        </div>
 
-					<article class="portfolio-item pf-uielements pf-icons">
-						<div class="portfolio-image">
-							<a href="portfolio-single-video.html">
-								<img src="travel/images/packages/7.jpg" alt="Forest Camping">
-								<div class="portfolio-overlay">
-									<div class="portfolio-desc">
-										<h3>Eau potable pour tous</h3>
-									</div>
-								</div>
-							</a>
-						</div>
-					</article>
-				</div>
-			</div>
-		</section>
+        <div id="pagewrap">
+            <div class="center" id="map"></div>
+        </div>
+    </section>
 
-		<footer id="footer" class="dark" style="background-color: #222;">
-			<div id="copyrights">
-				<div class="container clearfix">
-					<div class="col_half">
-						Copyleft &copy; 2019 Perfect Timing Webcup reunion 2019.<br>
-					</div>
-					<div class="col_half col_last tright">
-						<div class="fright clearfix">
-							<a href="#" class="social-icon si-small si-borderless si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
+    <footer id="footer" class="dark" style="background-color: #222;">
+        <div id="copyrights">
+            <div class="container clearfix">
+                <div class="col_half">
+                    Copyleft &copy; 2019 Perfect Timing Webcup reunion 2019.<br>
+                </div>
+                <div class="col_half col_last tright">
+                    <div class="fright clearfix">
+                        <a href="#" class="social-icon si-small si-borderless si-facebook">
+                            <i class="icon-facebook"></i>
+                            <i class="icon-facebook"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-twitter">
+                            <i class="icon-twitter"></i>
+                            <i class="icon-twitter"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-gplus">
+                            <i class="icon-gplus"></i>
+                            <i class="icon-gplus"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-pinterest">
-								<i class="icon-pinterest"></i>
-								<i class="icon-pinterest"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-pinterest">
+                            <i class="icon-pinterest"></i>
+                            <i class="icon-pinterest"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-vimeo">
-								<i class="icon-vimeo"></i>
-								<i class="icon-vimeo"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-vimeo">
+                            <i class="icon-vimeo"></i>
+                            <i class="icon-vimeo"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-github">
-								<i class="icon-github"></i>
-								<i class="icon-github"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-github">
+                            <i class="icon-github"></i>
+                            <i class="icon-github"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-yahoo">
-								<i class="icon-yahoo"></i>
-								<i class="icon-yahoo"></i>
-							</a>
+                        <a href="#" class="social-icon si-small si-borderless si-yahoo">
+                            <i class="icon-yahoo"></i>
+                            <i class="icon-yahoo"></i>
+                        </a>
 
-							<a href="#" class="social-icon si-small si-borderless si-linkedin">
-								<i class="icon-linkedin"></i>
-								<i class="icon-linkedin"></i>
-							</a>
-						</div>
+                        <a href="#" class="social-icon si-small si-borderless si-linkedin">
+                            <i class="icon-linkedin"></i>
+                            <i class="icon-linkedin"></i>
+                        </a>
+                    </div>
 
-						<div class="clear"></div>
+                    <div class="clear"></div>
 
-						<i class="icon-envelope2"></i> info@bisolaris.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-solaris-11-6541-constellation
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
+                    <i class="icon-envelope2"></i> info@bisolaris.com <span class="middot">&middot;</span> <i class="icon-headphones"></i> +91-solaris-11-6541-constellation
+                </div>
+            </div>
+        </div>
+    </footer>
 
 {% endblock %}
 
 {% block js %}
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/components/datepicker.js"></script>
+	<script src="js/functions.js"></script>
+    <script src={{ asset('interactive-map/raphael-min.js') }}></script>
+    <script src={{ asset('interactive-map/worldmap.js') }}></script>
 
-	<script src="../../js/jquery.js"></script>
-	<script src="../../js/plugins.js"></script>
-	<script src="../../js/components/datepicker.js"></script>
-	<script src="../../js/functions.js"></script>
-	<script>
+    <script>
 		$(function() {
 			$('.travel-date-group').datepicker({
 				autoclose: true,
@@ -224,33 +284,22 @@
 		});
 	</script>
 
-    <script src="../../js/functions.js"></script>
+    <script text='text/javascript'>
+        var modal = document.getElementById("myModal");
 
-	<script>
-        var bodyRect = document.body.getBoundingClientRect(),
-            elemRect = element.getBoundingClientRect(),
-              offset = elementRect.top - bodyRect.top;
-        alert('Element is' + offset + 'vertical pixel from <body>');
-	</script>
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>
-    <script>
-        (function() {
-        var placesAutocomplete = places({
-                appId: 'pl6124DJ467I',
-                apiKey: 'dac682bc8a0dc7a59f7ada449553bcf9',
-            container: document.querySelector('#address')
-        });
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-        var $address = document.querySelector('#address-value')
-        placesAutocomplete.on('change', function(e) {
-            $address.textContent = e.suggestion.value
-        });
-
-        placesAutocomplete.on('clear', function() {
-            $address.textContent = 'none';
-        });
-
-        })();
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 {% endblock %}
