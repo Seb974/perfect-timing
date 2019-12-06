@@ -61,7 +61,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 
 #pad_my_order li {
 	padding: 20px;
-	
 }
 
 @media screen and (max-height: 450px) {
@@ -74,3 +73,6 @@ table.dataTable thead .sorting_desc_disabled:before {
 	}
 }
 
+.yen_menu_bgcolor {
+    background-color: #E74B3D;
+}

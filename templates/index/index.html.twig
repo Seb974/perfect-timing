@@ -1,65 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello IndexController!{% endblock %}
+{% block title %}Hello FaceDetectionController!{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" href="{{ asset('plugins/face_detection/face_detection.css') }}">
+{% endblock %}
 
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
-
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<meta charset="utf-8">
-    <script type='text/javascript' src={{ asset('interactive-map/raphael-min.js') }}></script>
-    <script type='text/javascript' src={{ asset('interactive-map/worldmap.js') }}></script>
-
-	<style>
-	body {
-		font: .88em/1.53em Arial, Helvetica, sans-serif;
-		margin: 30px auto;
-		color: #999;
-	}
-	h1 {
-		font-size: 1.3em;
-		margin: 0 0 10px;
-		color: #000;
-	}
-	h2 {
-		font-size: 2.2em;
-		line-height: 1.1em;
-		margin: 0 0 10px;
-		color: #000;
-	}
-	a {
-		color: #69C;
-		text-decoration: none;
-	}
-	a:hover {
-		color: #F30;
-	}
-	p {
-		margin: 0 0 10px;
-	}
-	em {
-		font: italic 100% "Times New Roman", Times, serif;
-	}
-	.credits {
-		border-bottom: solid 1px #eee;
-		padding-bottom: 10px;
-		margin: 0 0 50px;
-	}
-	#pagewrap {
-		margin: 0 auto;
-		width: 800px;
-		max-width: 94%;
-	}
-	
-	#map {
-		width: 100%;
-	}
-	</style>
-</head>
 
 <body>
 <div id="pagewrap">
@@ -69,4 +20,22 @@
 	</div>
 </body>
 
+<div class="example-wrapper">
+	<script type='text/javascript' >
+		var isHuman = false;
+	</script>
+
+	<span id="timer"></span>
+    <p><center><input class="intergalactic_button" id= "scan" type="button" value="Start webcam feed" onclick="button_callback()"></center></p>
+	<p><center><canvas width=640 height=480></canvas></center></p>
+
+</div>
+{% endblock %}
+
+{% block js %}
+	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/face_detection.js') }}"></script>
 {% endblock %}
