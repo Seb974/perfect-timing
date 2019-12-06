@@ -38,6 +38,7 @@
 		//create set of locations
 		var location_set=paper.set();
 		
+		console.log("LOCATIONS: ", locations)
 		for (var location in locations){
 			var loc=locations[location];
 			console.log("NAME: ", loc.name);
