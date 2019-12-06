@@ -40,16 +40,17 @@
 		
 		console.log("LOCATIONS: ", locations)
 		for (var location in locations){
-			var loc=locations[location];
-			console.log("NAME: ", loc.name);
-			var xy=get_xy(loc.lat, loc.lng);
-			console.log("XY: ", xy);
-			var loc_obj=paper.circle(xy.x, xy.y, 10).attr({id: 'myBtn', fill: loc.color, stroke: 'white', 'stroke-width': 2, cursor: 'pointer'}).scale(scale, scale, 0, 0);
-			loc_obj.name=loc.name;
-			loc_obj.url=loc.url;
-			loc_obj.x=xy.x;
-			loc_obj.y=xy.y;
-			location_set.push(loc_obj);			
+			console.log("LOOPING YOUHOUUUU");
+			// var loc=locations[location];
+			// console.log("NAME: ", loc.name);
+			// var xy=get_xy(loc.lat, loc.lng);
+			// console.log("XY: ", xy);
+			// var loc_obj=paper.circle(xy.x, xy.y, 10).attr({id: 'myBtn', fill: loc.color, stroke: 'white', 'stroke-width': 2, cursor: 'pointer'}).scale(scale, scale, 0, 0);
+			// loc_obj.name=loc.name;
+			// loc_obj.url=loc.url;
+			// loc_obj.x=xy.x;
+			// loc_obj.y=xy.y;
+			// location_set.push(loc_obj);			
 		}
 		
 		function click_map() {
