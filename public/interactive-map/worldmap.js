@@ -48,6 +48,7 @@
 				var i = 0;
 				for (o in response) {
 					stock[i] = response[o]
+					i += 1;
 					console.log(response[o]);
 				}
 				console.log("STRINGIFY: ", JSON.stringify(stock));
