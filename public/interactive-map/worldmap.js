@@ -62,7 +62,6 @@
 		
 		function over(){
 			this.attr({'stroke-width': 3});
-			image_array[this.id]=
 			image_array[this.id]=paper.image(this.url, this.x+8, this.y-160, 150, 150).scale(scale, scale, 0, 0);
 			name.innerHTML=this.name+' (click to see picture)';
 		}
