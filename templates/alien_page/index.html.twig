@@ -3,6 +3,21 @@
 {% block title %}Hello AlienPageController!{% endblock %}
 
 {% block css %}
+    <link rel="stylesheet" href="{{ asset('interactive-map/modal_form.css') }}">
+    <link rel="stylesheet" href="{{ asset('interactive-map/text_entry.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 1200px; width: 95%; height: 200px; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet/1/leaflet.css" />
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script type='text/javascript' src={{ asset('interactive-map/raphael-min.js') }}></script>
@@ -45,7 +60,7 @@
 	}
 	#pagewrap {
 		margin: 0 auto;
-		width: 800px;
+		width: 1400px;
 		max-width: 94%;
 	}
 
@@ -113,61 +128,75 @@
         markers.forEach(removeMarker);
         markers = [];
 
-        if (e.suggestions.length === 0) {
-        map.setView(new L.LatLng(0, 0), 1);
-        return;
-        }
+<div id="myModal" class="modal">
 
-        e.suggestions.forEach(addMarker);
-        findBestZoom();
-    }
+<!-- Modal content -->
+<div class="modal-content">
+    <div class="modal-header">
+    <span class="close">&times;</span>
+    </div>
+    <div class="modal-body">
+        <div class="Wrapper">
+            <div class="Input">
+                <input font-size: 1px type="text" id="Text1" class="Input-text" placeholder="Name of the farm">
+                <label for="input" class="Input-label">Farm name</label>
+            </div>
+        </div>
+        <div class="Wrapper">
+            <div class="Input">
+                <input font-size: 1px type="text" id="Text2" class="Input-text" placeholder="Color of the dot (ex: red, blue, pink...)">
+                <label for="input" class="Input-label">Color</label>
+            </div>
+        </div>
+        <div class="Wrapper">
+            <div class="Input">
+                <input font-size: 1px type="text" id="Text3" class="Input-text" placeholder="Link to the image you want to put">
+                <label for="input" class="Input-label">Image url</label>
+            </div>
+        </div>
+        <div class="Wrapper">
+            <div class="Input">
+                <input font-size: 1px type="text" id="Text4" class="Input-text" placeholder="Description of the woof">
+                <label for="input" class="Input-label">Put a description here</label>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+    <span class="ok">ok</span>
+    </div>
+</div>
 
-    function handleOnChange(e) {
-        markers
-        .forEach(function(marker, markerIndex) {
-            if (markerIndex === e.suggestionIndex) {
-            markers = [marker];
-            marker.setOpacity(1);
-            findBestZoom();
-            } else {
-            removeMarker(marker);
-            }
-        });
-    }
+</div>
 
-    function handleOnClear() {
-        map.setView(new L.LatLng(0, 0), 1);
-        markers.forEach(removeMarker);
-    }
-
-    function handleOnCursorchanged(e) {
-        markers
-        .forEach(function(marker, markerIndex) {
-            if (markerIndex === e.suggestionIndex) {
-            marker.setOpacity(1);
-            marker.setZIndexOffset(1000);
-            } else {
-            marker.setZIndexOffset(0);
-            marker.setOpacity(0.5);
-            }
-        });
-    }
-
-    function addMarker(suggestion) {
-        var marker = L.marker(suggestion.latlng, {opacity: .4});
-        marker.addTo(map);
-        markers.push(marker);
-    }
-
-    function removeMarker(marker) {
-        map.removeLayer(marker);
-    }
-
-    function findBestZoom() {
-        var featureGroup = L.featureGroup(markers);
-        map.fitBounds(featureGroup.getBounds().pad(0.5), {animate: false});
-    }
-    })();
-    </script>
+<div class="example-wrapper">
+</div>
 {% endblock %}
 
+{% block js %}
+    <script text='text/javascript'>
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }    
+    </script>
+{% endblock %}
