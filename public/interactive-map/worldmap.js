@@ -112,10 +112,21 @@
 					locations[i] = new2;
 				}
 				var strLoc = JSON.stringify(locations);
-				console.log("STR: ", strLoc);
-				window.location.reload();
-				// console.log("MOUSE POS: ", document.body.textContent);
+				test2 = JSON.stringify(new2);
+				$.ajax({
+				headers: { 
+					'Accept': 'application/json',
+					'Content-Type': 'application/json' 
+				},
+				'type': 'POST',
+				'url': '/api/host_placements',
+				'data': JSON.stringify(new2),
+				'dataType': 'json',
+				'success': function(response) { console.log(response.data); }
+				});
 				localStorage.setItem('Locations', strLoc);
+				// window.location.reload();
+				// console.log("MOUSE POS: ", document.body.textContent);
 				// localStorage.clear();	
 			}
 			// When the user clicks anywhere outside of the modal, close it
@@ -167,71 +178,3 @@
 	} else {
 		console.log("Local Storage: ", "EMPTY");
 	}
-	// var locations={
-	// 	0: { 
-	// 		name: 'Paris',
-	// 		lat: 48.866666670,
-	// 		lng: 2.333333333,
-	// 		color: 'violet',
-	// 		url: 'http://www.flickr.com/photos/wlappe/2903363114/sizes/l/in/photostream/',
-	// 		img: 'paris'
-	// 	},
-	// 	1: { 
-	// 		name: 'Shanghai',
-	// 		lat: 31.10,
-	// 		lng: 121.366,
-	// 		color: 'black',
-	// 		url: 'http://www.flickr.com/photos/mulliganstu/8258009156/sizes/k/in/photostream/',
-	// 		img: 'shanghai'
-	// 	},
-	// 	2: { 
-	// 		name: 'New York',
-	// 		lat: 40.7,
-	// 		lng: -73.90,
-	// 		color: 'red',
-	// 		url: 'http://www.flickr.com/photos/29624656@N08/3735314426/sizes/l/in/photostream/',
-	// 		img: 'newyork'
-	// 	},
-	// 	3: { 
-	// 		name: 'Los Angeles',
-	// 		lat: 34.0,
-	// 		lng: -118.25,
-	// 		color: 'purple',
-	// 		img: 'losangeles',
-	// 		url: 'http://www.flickr.com/photos/ahhdrjones/2233960320/sizes/l/in/photostream/'
-	// 	},
-	// 	4: { 
-	// 		name: 'Cape Town',
-	// 		lat: -35.916,
-	// 		lng: 18.36,
-	// 		color: 'hotpink',
-	// 		img: 'capetown',
-	// 		url: 'http://www.flickr.com/photos/eguidetravel/6398495943/sizes/o/in/photostream/'
-	// 	},
-	// 	5: { 
-	// 		name: 'Santiago',
-	// 		lat: -33.45,
-	// 		lng: -70.66,
-	// 		color: 'blue',
-	// 		img: 'santiago',
-	// 		url: 'http://www.flickr.com/photos/leonardodasilva/7842929988/sizes/o/in/photostream/'
-	// 	},
-	// 	6: { 
-	// 		name: 'Cairo',
-	// 		lat: 30.05,
-	// 		lng: 31.25,
-	// 		color: 'green',
-	// 		img: 'cairo',
-	// 		url: 'http://www.flickr.com/photos/azwegers/6201079985/sizes/o/in/photostream/'
-	// 	},
-	// 	7: { 
-	// 		name: 'Singapore',
-	// 		lat: 1.30,
-	// 		lng: 103.83,
-	// 		color: 'orange',
-	// 		img: 'singapore',
-	// 		url: 'http://www.flickr.com/photos/jjcbaron/5072266832/sizes/l/in/photostream/'
-	// 	}
-	// }
-	
-
