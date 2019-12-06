@@ -188,4 +188,10 @@
 	}
 	var locations;
 
+	//create locations
+	console.log("Parsed: ", JSON.parse(localStorage.getItem("Locations")))
+	if (localStorage.getItem("Locations") !== null)
+		console.log("ATTRIBUTING")
+		locations = localStorage.getItem("Locations")	
+	
 	// *********************************************Location Data*********************************************
