@@ -73,6 +73,7 @@
 		}
 
 		function click_dot() {
+			var url = document.URL.split("/");
 			if (url[3] && url[3].localeCompare("humanpage") !== 0)
 				return;
 			console.log("ON HUMAN PAGE");
