@@ -73,7 +73,7 @@
 		}
 
 		function click() {
-			console.log("URL: ", document.URL);
+			console.log("URL: ", document.URL.split("/"));
 			var modal = document.getElementById("myModal");
 			var span = document.getElementsByClassName("close")[0];
 			var ok = document.getElementsByClassName("ok")[0];
