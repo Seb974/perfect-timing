@@ -7,11 +7,33 @@
 
 {% block body %}
     <style>
-        #map-example-container
-        { height: 300px };
+        #map-example-container { height: 300px };
+		.form-group > label.error {
+			display: block !important;
+			text-transform: none;
+		}
+
+		.form-group input.valid ~ label.error,
+		.form-group input[type="text"] ~ label.error,
+		.form-group input[type="email"] ~ label.error,
+		.form-group input[type="number"] ~ label.error,
+		.form-group select ~ label.error { display: none !important; }
+
+		.calories-wrap {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		#fitness-form .btn-outline-dark:not(.disabled):not(.active):not(:hover) {
+			color: #444;
+			background-color: #FFF;
+			border-color: #CED4DA;
+		}
     </style>
 
-    <div class="container mt-3">
+    <div class="container mt-3 form-group">
 
         {# {{ form_start(form) }}
             {{ form_widget(form) }}
@@ -22,26 +44,29 @@
             <div class="my-custom-class-for-errors">
                 {{ form_errors(form) }}
             </div>
-            <div id="map-example-container"></div>
-            <input type="search" id="input-map" class="form-control" name="algoliaBar" placeholder="Address" required/>
-            <div class="col">
+
+            <div class="col-12 form-group">     
+                <div id="map-example-container"></div>
+                <label for="input-map" class="required">Adresse</label>
+                <input type="search" id="input-map" class="col-12 form-group" name="algoliaBar" placeholder="" required />
+            </div>
+
+            <div class="col-12 form-group">
                 {{ form_row(form.email) }}
             </div>
 
-            <div class="col">
+            <div class="col-12 form-group">
                 {{ form_row(form.activity) }}
             </div>
-            <div class="col">
+            <div class="col-12 form-group">
                 {{ form_row(form.photo) }}
             </div>
 
-            
-
-            <button class="btn">{{ button_label|default('Save') }}</button>
+            <button class="btn btn-secondary">{{ button_label|default('CREER') }}</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
- 
+
  {% block js %}
     <script src="https://cdn.jsdelivr.net/leaflet/1/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.17.1"></script>

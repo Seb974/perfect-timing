@@ -19,24 +19,28 @@ class TransactionType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'required' => true,
+                'attr' => ['class' => 'form-control required'],
             ])
             ->add('email', EmailType::class, [
                 'required' => true,
+                'attr' => ['class' => 'form-control required'],
             ])
             ->add('motivation', TextType::class, [
                 'required' => true,
+                'attr' => ['class' => 'form-control required'],
             ])
             // ->add('dateSelected')
-            ->add('state', ChoiceType::class, [
-                'choices'  => [
-                    'En attente' => "En attente",
-                    'Validée' => "Validée",
-                    'Refusée' => "Refusée",
-                ],
-                'mapped' => false,
-            ])
+            // ->add('state', ChoiceType::class, [
+            //     'choices'  => [
+            //         'En attente' => "En attente",
+            //         'Validée' => "Validée",
+            //         'Refusée' => "Refusée",
+            //     ],
+            //     'mapped' => false,
+            // ])
             ->add('relation', EntityType::class, [
                 'class' => HostPlace::class,
+                'attr' => ['class' => 'form-control required'],
                 'mapped' => true,
                 'choice_label' => function ($hostPlace) {
                     return $hostPlace->getAddress();

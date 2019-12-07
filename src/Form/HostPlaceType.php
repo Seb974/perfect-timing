@@ -24,9 +24,11 @@ class HostPlaceType extends AbstractType
             // ])
             ->add('email', TextType::class, [
                 'required' => true,
+                'attr' => ['class' => 'form-control required']
             ])
             ->add('activity', EntityType::class, [
                 'class' => Activity::class,
+                'attr' => ['class' => 'form-control required'],
                 'mapped' => true,
                 'choice_label' => function ($activity) {
                     return $activity->getName();
@@ -34,6 +36,7 @@ class HostPlaceType extends AbstractType
             ])
             ->add('photo', FileType::class, [
                 'label' => 'Illustration',
+                'attr' => ['class' => 'btn btn-secondary'],
                 'required' => false,
                 'mapped' => false,
                 'constraints' => [
