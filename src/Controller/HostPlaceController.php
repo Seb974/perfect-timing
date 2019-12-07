@@ -50,7 +50,7 @@ class HostPlaceController extends AbstractController
             $entityManager->persist($hostPlace);
             $entityManager->flush();
 
-            return $this->redirectToRoute('host_place_index');
+            return $this->redirectToRoute('alienpage');
         }
 
         return $this->render('host_place/new.html.twig', [
@@ -87,7 +87,7 @@ class HostPlaceController extends AbstractController
             }
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('host_place_index');
+            return $this->redirectToRoute('alienpage');
         }
 
         return $this->render('host_place/edit.html.twig', [
@@ -132,10 +132,35 @@ class HostPlaceController extends AbstractController
             $entityManager->persist($hostPlace);
             $entityManager->flush();
 
-            return $this->redirectToRoute('host_place_index');
+            return $this->redirectToRoute('alienpage');
         }
 
         return $this->render('host_place/modalcreate.html.twig', [
+            'host_place' => $hostPlace,
+            'form' => $form->createView(),
+        ]);
+
+        $hostPlace = new HostPlace();
+        $form = $this->createForm(HostPlaceType::class, $hostPlace);
+        $form->handleRequest($request);
+        $user = $this->getUser();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $picFile = $form->get('photo')->getData();
+            if ($picFile) {
+                $picture = new Photo();
+                $newFilename = $this->savePicture($picFile);
+                $picture->setUrl($newFilename);
+                $hostPlace->setPhoto($picture);
+            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($hostPlace);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('host_place_index');
+        }
+
+        return $this->render('host_place/new.html.twig', [
             'host_place' => $hostPlace,
             'form' => $form->createView(),
         ]);
