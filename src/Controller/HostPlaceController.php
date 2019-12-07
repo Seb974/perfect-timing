@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\HostPlace;
+use App\Entity\Photo;
 use App\Form\HostPlaceType;
 use App\Repository\HostPlaceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,7 +39,13 @@ class HostPlaceController extends AbstractController
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hostPlace->setOwner($user);
+            $picFile = $form->get('photo')->getData();
+            if ($picFile) {
+                $picture = new Photo();
+                $newFilename = $this->savePicture($picFile);
+                $picture->setUrl($newFilename);
+                $hostPlace->setPhoto($picture);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($hostPlace);
             $entityManager->flush();
@@ -69,6 +78,13 @@ class HostPlaceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $picFile = $form->get('photo')->getData();
+            if ($picFile) {
+                $picture = new Photo();
+                $newFilename = $this->savePicture($picFile);
+                $picture->setUrl($newFilename);
+                $hostPlace->setPhoto($picture);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('host_place_index');
@@ -105,7 +121,13 @@ class HostPlaceController extends AbstractController
         $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $hostPlace->setOwner($user);
+            $picFile = $form->get('photo')->getData();
+            if ($picFile) {
+                $picture = new Photo();
+                $newFilename = $this->savePicture($picFile);
+                $picture->setUrl($newFilename);
+                $hostPlace->setPhoto($picture);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($hostPlace);
             $entityManager->flush();
@@ -117,5 +139,26 @@ class HostPlaceController extends AbstractController
             'host_place' => $hostPlace,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * savePicture
+     */
+    private function savePicture($pictureFile)
+    {
+        $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+        $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+        try {
+            $pictureFile->move(
+                $this->getParameter('pics_directory'),
+                $newFilename
+            );
+        } catch (FileException $e) {
+            // ... handle exception if something happens during file upload
+        }
+
+        return $newFilename;
     }
 }

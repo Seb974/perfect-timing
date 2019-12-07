@@ -22,8 +22,7 @@ class Photo
     private $url;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\HostPlace", inversedBy="photos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToOne(targetEntity="App\Entity\HostPlace", mappedBy="photo", cascade={"persist", "remove"})
      */
     private $hostPlace;
 
@@ -44,14 +43,20 @@ class Photo
         return $this;
     }
 
-    public function getHostPlace(): ?hostPlace
+    public function getHostPlace(): ?HostPlace
     {
         return $this->hostPlace;
     }
 
-    public function setHostPlace(?hostPlace $hostPlace): self
+    public function setHostPlace(?HostPlace $hostPlace): self
     {
         $this->hostPlace = $hostPlace;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newPhoto = null === $hostPlace ? null : $this;
+        if ($hostPlace->getPhoto() !== $newPhoto) {
+            $hostPlace->setPhoto($newPhoto);
+        }
 
         return $this;
     }
