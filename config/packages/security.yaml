@@ -18,10 +18,10 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
-            guard:
-                authenticators:
-                    - App\Security\Authenticator
+            anonymous: true
+            # guard:
+                # authenticators:
+                    # - App\Security\Authenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
@@ -30,7 +30,7 @@ security:
             pattern:  ^/api
             stateless: true
             anonymous: true
-            provider: app_user_provider
+            # provider: app_user_provider
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -42,5 +42,6 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

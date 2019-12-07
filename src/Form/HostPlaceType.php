@@ -8,9 +8,11 @@ use App\Form\PhotoType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class HostPlaceType extends AbstractType
 {
@@ -20,7 +22,9 @@ class HostPlaceType extends AbstractType
             ->add('address', TextType::class, [
                 'required' => true,
             ])
-            // ->add('owner')
+            ->add('email', TextType::class, [
+                'required' => true,
+            ])
             ->add('activity', EntityType::class, [
                 'class' => Activity::class,
                 'mapped' => true,
@@ -28,13 +32,23 @@ class HostPlaceType extends AbstractType
                     return $activity->getName();
                 }
             ])
-            ->add('photos', CollectionType::class, array(
-                'entry_type'   => PhotoType::class,
-                'allow_add'    => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-                'mapped' => true,
-              ))
+            ->add('photo', FileType::class, [
+                'label' => 'Illustration',
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5242880',
+                        'mimeTypes' => [
+                            "image/png",
+                            "image/jpeg",
+                            "image/jpg",
+                            "image/gif",
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid picture',
+                    ])
+                ],
+            ])
         ;
     }
 
