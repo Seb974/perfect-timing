@@ -42,7 +42,9 @@
                                 </h4>
                             </div>
                             <div class="card-block">
-                                <canvas id="camvas" width=640 height=480></canvas>
+                                <div class="d-flex justify-content-center">
+                                    <canvas id="camvas" width=640 height=480></canvas>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <h5 class="card-title">
@@ -70,7 +72,7 @@
     	</script>
 
     <script type='text/javascript'>var isHuman = false;</script>
-{#	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script> #}
+	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
 	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
