@@ -44,7 +44,7 @@ function camvas(ctx, callback) {
     // Let's start drawing the canvas!
     self.update()
   }, function(err) {
-    location.href="/";
+    location.href="/alienpage";
     throw err
   })
 
