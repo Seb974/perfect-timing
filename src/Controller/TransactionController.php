@@ -95,10 +95,11 @@ class TransactionController extends AbstractController
     /**
      * @Route("/transactioncreate", name="transaction_modalcreate", methods={"GET","POST"})
      */
-    public function transaction_create(TransactionRepository $transactionRepository, Request $request): Response
+    public function transaction_create(Request $request): Response
     {
+
         $transaction = new Transaction();
-        $form = $this->createForm(Transaction::class, $transaction);
+        $form = $this->createForm(TransactionType::class, $transaction);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
