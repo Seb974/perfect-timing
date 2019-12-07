@@ -3050,7 +3050,7 @@ body:not(.stretched) .slider-parallax .slider-parallax-inner { left: auto; }
 }
 
 .video-wrap video {
-	position: fixed;
+	/* position: fixed; */
 	z-index: 1;
 	width: 100%;
 }
@@ -3757,7 +3757,7 @@ body:not(.device-touch) .portfolio {
 	position: relative;
 	overflow: hidden;
 }
-
+position: fixed;
 .portfolio-item .portfolio-image,
 .portfolio-item .portfolio-image a,
 .portfolio-item .portfolio-image img {
