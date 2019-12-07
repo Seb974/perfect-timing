@@ -38,8 +38,8 @@ class TransactionType extends AbstractType
             ->add('relation', EntityType::class, [
                 'class' => HostPlace::class,
                 'mapped' => true,
-                'choice_label' => function ($activity) {
-                    return $activity->getName();
+                'choice_label' => function ($hostPlace) {
+                    return $hostPlace->getOwner()->getUsername();
                 }
             ])
         ;
