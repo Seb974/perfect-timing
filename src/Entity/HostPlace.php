@@ -26,17 +26,6 @@ class HostPlace
     private $address;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $owner;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Photo", mappedBy="hostPlace", orphanRemoval=true)
-     */
-    private $photos;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Activity", inversedBy="hostPlace")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -46,6 +35,16 @@ class HostPlace
      * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="relation", orphanRemoval=true)
      */
     private $transactions;
+
+    /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $email;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Photo", inversedBy="hostPlace", cascade={"persist", "remove"})
+     */
+    private $photo;
 
     public function __construct()
     {
@@ -68,49 +67,6 @@ class HostPlace
     public function setAddress(string $address): self
     {
         $this->address = $address;
-
-        return $this;
-    }
-
-    public function getOwner(): ?User
-    {
-        return $this->owner;
-    }
-
-    public function setOwner(?User $owner): self
-    {
-        $this->owner = $owner;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Photo[]
-     */
-    public function getPhotos(): Collection
-    {
-        return $this->photos;
-    }
-
-    public function addPhoto(Photo $photo): self
-    {
-        if (!$this->photos->contains($photo)) {
-            $this->photos[] = $photo;
-            $photo->setHostPlace($this);
-        }
-
-        return $this;
-    }
-
-    public function removePhoto(Photo $photo): self
-    {
-        if ($this->photos->contains($photo)) {
-            $this->photos->removeElement($photo);
-            // set the owning side to null (unless already changed)
-            if ($photo->getHostPlace() === $this) {
-                $photo->setHostPlace(null);
-            }
-        }
 
         return $this;
     }
@@ -154,6 +110,30 @@ class HostPlace
                 $transaction->setRelation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?Photo
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?Photo $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }
