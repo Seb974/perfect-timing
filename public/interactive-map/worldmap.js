@@ -57,7 +57,7 @@
 
 		var name = document.getElementById('location_name');
 		location_set.hover(over, out); 	//Adds event handlers for hovering over the element
-		// location_set.click(click);
+		location_set.click(click_dot);
 		// *********************************************Functions *********************************************
 
 		function over(){
@@ -72,8 +72,16 @@
 			image_array[this.id].remove();
 		}
 
+		function click_dot() {
+			if (url[3] && url[3].localeCompare("humanpage") !== 0)
+				return;
+			console.log("ON HUMAN PAGE");
+		}
+
 		function click() {
-			console.log("URL: ", document.URL.split("/"));
+			var url = document.URL.split("/");
+			if (url[3] && url[3].localeCompare("humanpage") === 0)
+				return;
 			var modal = document.getElementById("myModal");
 			var span = document.getElementsByClassName("close")[0];
 			var ok = document.getElementsByClassName("ok")[0];
