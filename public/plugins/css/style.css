@@ -3050,7 +3050,7 @@ body:not(.stretched) .slider-parallax .slider-parallax-inner { left: auto; }
 }
 
 .video-wrap video {
-	position: relative;
+	position: fixed;
 	z-index: 1;
 	width: 100%;
 }
