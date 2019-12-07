@@ -30,15 +30,14 @@ class TransactionType extends AbstractType
                 'attr' => ['class' => 'form-control required'],
             ])
             // ->add('dateSelected')
-            ->add('state', ChoiceType::class, [
-                'choices'  => [
-                    'En attente' => "En attente",
-                    'Validée' => "Validée",
-                    'Refusée' => "Refusée",
-                ],
-                'attr' => ['class' => 'form-control required'],
-                'mapped' => false,
-            ])
+            // ->add('state', ChoiceType::class, [
+            //     'choices'  => [
+            //         'En attente' => "En attente",
+            //         'Validée' => "Validée",
+            //         'Refusée' => "Refusée",
+            //     ],
+            //     'mapped' => false,
+            // ])
             ->add('relation', EntityType::class, [
                 'class' => HostPlace::class,
                 'attr' => ['class' => 'form-control required'],
