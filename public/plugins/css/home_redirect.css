@@ -1,0 +1,9 @@
+.home_redirect {
+    position: absolute;
+    float: left;
+}
+
+home_redirect:hover {
+    font-size: 2%;
+    color: black;
+}
