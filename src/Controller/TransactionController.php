@@ -106,10 +106,10 @@ class TransactionController extends AbstractController
             $entityManager->persist($transaction);
             $entityManager->flush();
 
-            return $this->redirectToRoute('host_place_index');
+            return $this->redirectToRoute('transaction_index');
         }
 
-        return $this->render('host_place/modalcreate.html.twig', [
+        return $this->render('transaction/modalcreate.html.twig', [
             'transaction' => $transaction,
             'form' => $form->createView(),
         ]);
