@@ -93,4 +93,29 @@ class HostPlaceController extends AbstractController
 
         return $this->redirectToRoute('host_place_index');
     }
+
+    /**
+     * @Route("/modalcreate", name="host_place_modalcreate", methods={"GET","POST"})
+     */
+    public function modal_create(HostPlaceRepository $hostPlaceRepository, Request $request): Response
+    {
+        $hostPlace = new HostPlace();
+        $form = $this->createForm(HostPlaceType::class, $hostPlace);
+        $form->handleRequest($request);
+        $user = $this->getUser();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $hostPlace->setOwner($user);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($hostPlace);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('host_place_index');
+        }
+
+        return $this->render('host_place/modalcreate.html.twig', [
+            'host_place' => $hostPlace,
+            'form' => $form->createView(),
+        ]);
+    }
 }

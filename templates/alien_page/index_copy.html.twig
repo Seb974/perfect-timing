@@ -14,8 +14,6 @@
 {% endblock %}
 
 {% block body %}
-    {# {% include 'layout/navbar.twig.html' %} #}
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" id="myModal2Button" style="display:none">modal publicite</button>
     <section id="page-title" class="page-title-parallax page-title-dark page-title-video" style="padding: 80px 0">
 
         <div class="video-wrap">
@@ -32,17 +30,15 @@
                 <div>est la responsabilité de chacun et qu'il est temp d'agir.</div>
             </div>
 
-            <form action="#" method="post" class="divcenter landing-wide-form clearfix nobottommargin" style="max-width: 1000px">
-                <div class="row">
-                    <div class="col-lg-9 col-md-9 input-daterange travel-date-group">
-                        <input type="text" value="" class="form-control form-control-lg not-dark tleft mnth" name="end" placeholder="Je souhaite changer le monde en ...">
-                    </div>
-                    <div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
-                    <div class="col-lg-3 clearfix">
-                        <button class="button btn-lg button-rounded btn-block nomargin" data-toggle="modal" data-target="#myModal3" id="candidateButton" style="height: 46px">CANDIDATER</button>
-                    </div>
+            <div class="row">
+                <div class="col-lg-9 col-md-9 input-daterange travel-date-group">
+                    <input type="text" value="" class="form-control form-control-lg not-dark tleft mnth" name="end" placeholder="Je souhaite changer le monde en ...">
                 </div>
-            </form>
+                <div class="w-100 topmargin d-none d-md-block d-lg-none"></div>
+                <div class="col-lg-3 clearfix">
+                    <button class="button btn-lg button-rounded btn-block nomargin" data-toggle="modal" data-target="#myModal3" id="candidateButton" style="height: 46px">CREER UNE FORMATION WOOFING</button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -272,16 +268,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <h4>Overflowing text to show scroll behavior</h4>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        <p class="nobottommargin">Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                       {{ render ( controller( 'App\\Controller\\HostPlaceController:modal_create') ) }}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
@@ -312,38 +299,4 @@
 		});
 	</script>
 
-
-    <script>
-        var pub = false;
-        var scrollPos = 0;
-        document.addEventListener('scroll', handleScroll);
-        function handleScroll(){
-            var element = document.querySelector('#candidateButton').getBoundingClientRect();
-            if ((document.body.getBoundingClientRect()).top < scrollPos && element.bottom < 0 && pub == false) {
-                pub = true;
-                // alert('PUBLICITE : Viens voir le docteur !');
-                document.querySelector("#myModal2Button").click();
-            }
-            scrollPos = (document.body.getBoundingClientRect()).top;
-        };
-	</script>
-
-    <script text='text/javascript'>
-        var modal = document.getElementById("myModal");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 {% endblock %}
