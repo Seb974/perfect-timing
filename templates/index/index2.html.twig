@@ -1,0 +1,78 @@
+{% block css %}
+    <link href="http://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/bootstrap.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/style.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/dark.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/font-icons.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/one-page/css/et-line.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/animate.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/magnific-popup.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/css/responsive.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('plugins/modern-blog/modern-blog.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('plugins/face_detection/camvas.css') }}">
+    <style>
+        body { background-color: #000000 };
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+{% endblock %}
+
+{% block body %}
+	<div id="wrapper" class="clearfix">
+		<section id="slider" class="slider-element clearfix" style="height: 100% !important;">
+			<div class="fslider full-screen force-full-screen" data-speed="1800" data-pause="5000" data-animation="fade" data-arrows="false" data-pagi="false">
+				<div class="flexslider full-screen force-full-screen">
+					<div class="slider-wrap force-full-screen">
+						<div class="slide center full-screen force-full-screen" style="background: url('https://static.wixstatic.com/media/515ffdd806024012a6126d614b261c48.jpg/v1/fill/w_1002,h_768,al_c,q_85,usm_0.66_1.00_0.01/515ffdd806024012a6126d614b261c48.webp') center center; background-size: cover;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="content" class="bg-light">
+            <div class="container" style="margin-top:250px; height: 100% !important;"">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 mx-auto">
+                        <div class="card m-b-12">
+                            <div class="card-header">
+                                <h4 class="card-title">
+                                   Se connecter à PerfectTiming
+                                </h4>
+                            </div>
+                            <div class="card-block">
+                                <canvas id="camvas" width=640 height=480></canvas>
+                            </div>
+                            <div class="card-footer">
+                                <h5 class="card-title">
+                                    Veuillez utilser votre caméra pour procéder à la connexion biométrique. Vous serez automatiquement redirigé sur la page correspondant à votre race.
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</section>
+	</div>
+{% endblock %}
+
+{% block js %}
+    <script src="js/jquery.js"></script>
+	<script src="js/plugins.js"></script>
+    <script src="js/functions.js"></script>
+
+            <script type='text/javascript' >
+    		var isHuman = null;
+    		document.addEventListener("DOMContentLoaded", function() {
+      			button_callback();
+    		});
+    	</script>
+
+    <script type='text/javascript'>var isHuman = false;</script>
+{#	<script src="{{ asset('plugins/face_detection/chrono.js') }}"></script> #}
+	<script src="{{ asset('plugins/face_detection/camvas.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/pico.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/lploc.js') }}"></script>
+	<script src="{{ asset('plugins/face_detection/face_detection.js') }}"></script>
+{% endblock %}
