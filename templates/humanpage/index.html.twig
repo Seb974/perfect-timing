@@ -15,7 +15,7 @@
 
 {% block body %}
     {# {% include 'layout/navbar.twig.html' %} #}
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">modal publicite</button>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" id="myModal2">modal publicite</button>
 
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -293,11 +293,8 @@
             var element = document.querySelector('#candidateButton').getBoundingClientRect();
             if ((document.body.getBoundingClientRect()).top < scrollPos && element.bottom < 0 && pub == false) {
                 pub = true;
-                alert('PUBLICITE : Viens voir le docteur !');
-                var event = new Event('click');
-
-                //distribuer l'événement.
-                document.querySelector("#myModal2").dispatchEvent(event);
+                // alert('PUBLICITE : Viens voir le docteur !');
+                document.querySelector("#myModal2").click();
             }
             scrollPos = (document.body.getBoundingClientRect()).top;
         };
