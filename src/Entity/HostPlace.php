@@ -42,11 +42,17 @@ class HostPlace
      */
     private $activity;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Transaction", mappedBy="relation", orphanRemoval=true)
+     */
+    private $transactions;
+
     public function __construct()
     {
         $this->candidates = new ArrayCollection();
         $this->selected = new ArrayCollection();
         $this->photos = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,6 +123,37 @@ class HostPlace
     public function setActivity(?Activity $activity): self
     {
         $this->activity = $activity;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Transaction[]
+     */
+    public function getTransactions(): Collection
+    {
+        return $this->transactions;
+    }
+
+    public function addTransaction(Transaction $transaction): self
+    {
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setRelation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transaction $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getRelation() === $this) {
+                $transaction->setRelation(null);
+            }
+        }
 
         return $this;
     }
