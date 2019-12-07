@@ -1,4 +1,5 @@
 .home_redirect {
+    color: grey;
     position: absolute;
     float: left;
 }
@@ -6,4 +7,5 @@
 home_redirect:hover {
     font-size: 2%;
     color: black;
+    background-color: aqua;
 }
