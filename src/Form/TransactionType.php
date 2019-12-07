@@ -39,7 +39,7 @@ class TransactionType extends AbstractType
                 'class' => HostPlace::class,
                 'mapped' => true,
                 'choice_label' => function ($hostPlace) {
-                    return $hostPlace->getOwner()->getUsername();
+                    return $hostPlace->getAddress();
                 }
             ])
         ;
