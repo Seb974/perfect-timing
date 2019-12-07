@@ -97,21 +97,20 @@ class TransactionController extends AbstractController
      */
     public function transaction_create(TransactionRepository $transactionRepository, Request $request): Response
     {
-        $hostPlace = new Transaction();
-        $form = $this->createForm(Transaction::class, $hostPlace);
+        $transaction = new Transaction();
+        $form = $this->createForm(Transaction::class, $transaction);
         $form->handleRequest($request);
-        $user = $this->getUser();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($hostPlace);
+            $entityManager->persist($transaction);
             $entityManager->flush();
 
             return $this->redirectToRoute('host_place_index');
         }
 
         return $this->render('host_place/modalcreate.html.twig', [
-            'host_place' => $hostPlace,
+            'transaction' => $transaction,
             'form' => $form->createView(),
         ]);
     }
