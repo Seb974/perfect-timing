@@ -294,6 +294,10 @@
             if ((document.body.getBoundingClientRect()).top < scrollPos && element.bottom < 0 && pub == false) {
                 pub = true;
                 alert('PUBLICITE : Viens voir le docteur !');
+                var event = new Event('click');
+
+                //distribuer l'événement.
+                document.querySelector("#myModal2").dispatchEvent(event);
             }
             scrollPos = (document.body.getBoundingClientRect()).top;
         };
