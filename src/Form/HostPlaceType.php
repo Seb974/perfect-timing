@@ -19,9 +19,9 @@ class HostPlaceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address', TextType::class, [
-                'required' => true,
-            ])
+            // ->add('address', TextType::class, [
+            //     'required' => true,
+            // ])
             ->add('email', TextType::class, [
                 'required' => true,
             ])
