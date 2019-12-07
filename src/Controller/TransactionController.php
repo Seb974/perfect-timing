@@ -35,6 +35,8 @@ class TransactionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $transaction->setDateSelected(date("Y-m"));
+            $transaction->setState("En attente");
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($transaction);
             $entityManager->flush();
@@ -67,6 +69,8 @@ class TransactionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $transaction->setDateSelected(date("Y-m"));
+            $transaction->setState("En attente");
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('transaction_index');
@@ -103,6 +107,8 @@ class TransactionController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $transaction->setDateSelected(date("Y-m"));
+            $transaction->setState("En attente");
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($transaction);
             $entityManager->flush();
