@@ -3,6 +3,7 @@
 {% block title %}New Transaction{% endblock %}
 
 {% block body %}
+    <a href="/" style="position: absolute; float: left; z-index: 1000" target="_blank" onClick="location='/'">&#8592Home</a>
     <h1>Poster sa candidature</h1>
 
     {{ include('transaction/_form.html.twig') }}
