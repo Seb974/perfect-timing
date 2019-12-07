@@ -72,7 +72,8 @@
 			image_array[this.id].remove();
 		}
 
-		function click(){
+		function click() {
+			console.log("URL: ", document.URL());
 			var modal = document.getElementById("myModal");
 			var span = document.getElementsByClassName("close")[0];
 			var ok = document.getElementsByClassName("ok")[0];
